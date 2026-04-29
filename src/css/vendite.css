@@ -1,0 +1,396 @@
+.hero-vendita {
+  min-height: 100vh;
+  background: var(--dark);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  align-items: stretch;
+}
+
+.hero-copy {
+  padding: clamp(8rem, 12vw, 12rem) clamp(1.5rem, 5vw, 5.5rem) 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-copy::after {
+  content: "A4";
+  position: absolute;
+  right: 2vw;
+  bottom: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(8rem, 22vw, 23rem);
+  line-height: .75;
+  color: rgba(255,255,255,.045);
+  pointer-events: none;
+}
+
+.hero-copy h1 {
+  font-size: clamp(3rem, 6.8vw, 7.2rem);
+  line-height: .9;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+  max-width: 820px;
+}
+
+.hero-copy p {
+  font-size: clamp(1.03rem, 1.35vw, 1.25rem);
+  line-height: 1.58;
+  color: rgba(255,255,255,.82);
+  max-width: 710px;
+  margin: 1.4rem 0 0;
+}
+
+.hero-photo {
+  position: relative;
+  background: url("../img/lavorazioni/1/copertina.jpg") center / cover no-repeat;
+  min-height: 100%;
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23,26,32,.03), rgba(23,26,32,.48));
+}
+
+.sold-tag {
+  position: absolute;
+  z-index: 2;
+  top: clamp(6.8rem, 12vw, 9rem);
+  right: clamp(1rem, 4vw, 3rem);
+  background: var(--red);
+  color: var(--white);
+  border-radius: 999px;
+  padding: .65rem 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  box-shadow: 0 15px 40px rgba(0,0,0,.3);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+  margin-top: 2rem;
+}
+
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--red);
+  color: var(--white);
+}
+
+.fact {
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+
+.fact strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.8rem);
+  line-height: .95;
+  display: block;
+}
+
+.fact span {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .9rem;
+  display: block;
+  margin-top: .55rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: .76fr 1.24fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  background: var(--white);
+}
+
+.project-card {
+  position: sticky;
+  top: 7rem;
+  background: var(--cream);
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: 0 18px 50px rgba(23,26,32,.08);
+}
+
+.project-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.3rem 0 0;
+  display: grid;
+  gap: .65rem;
+}
+
+.project-card li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+
+.project-card li::before {
+  content: "";
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: var(--red);
+  position: absolute;
+  left: 0;
+  top: .65rem;
+}
+
+.doc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.4rem;
+}
+
+.slider-wrap {
+  overflow: hidden;
+}
+
+.property-carousel .slide-img {
+  height: min(68vh, 650px);
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.2rem;
+}
+
+.owl-stage {
+  display: flex;
+  align-items: stretch;
+}
+
+.three-panels {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--white);
+  border-radius: 1.4rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  box-shadow: 0 16px 45px rgba(23,26,32,.08);
+  min-height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panel h3 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: .95;
+  color: var(--red);
+  margin: 0 0 1rem;
+}
+
+.panel-mark {
+  width: 58px;
+  height: 58px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.video-section {
+  background: var(--dark);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+}
+
+.video-img {
+  background: url("../img/lavorazioni/1/foto-inserimento.jpg") center / cover no-repeat;
+}
+
+.video-copy {
+  padding: clamp(3rem, 6vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-copy p {
+  color: rgba(255,255,255,.82);
+}
+
+/* Banner villetta venduta */
+.sold-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  background: rgba(23, 26, 32, .42);
+  backdrop-filter: blur(6px);
+}
+
+.sold-notice.is-open {
+  display: flex;
+}
+
+.sold-notice-card {
+  position: relative;
+  width: min(920px, 100%);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  border-radius: 1.6rem;
+  background: var(--cream);
+  color: var(--dark);
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+  border: 1px solid rgba(23,26,32,.12);
+  animation: noticeUp .45s ease both;
+}
+
+.sold-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .9rem;
+  color: var(--red);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .82rem;
+}
+
+.sold-kicker::before {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+}
+
+.sold-notice-card h2 {
+  margin: 0 0 .7rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.6rem, 5vw, 5.2rem);
+  line-height: .9;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.sold-notice-card p {
+  max-width: 780px;
+  margin: .55rem 0;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.sold-close {
+  position: absolute;
+  top: .8rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(23,26,32,.18);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--red);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sold-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1.3rem;
+}
+
+.sold-actions a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  padding: .7rem 1.1rem;
+  border-radius: 999px;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .85rem;
+}
+
+.sold-actions a:last-child {
+  background: transparent;
+  color: var(--red);
+  border: 1.5px solid var(--red);
+}
+
+@keyframes noticeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-vendita,
+  .project-grid,
+  .three-panels,
+  .video-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    min-height: 48vh;
+    order: -1;
+    clip-path: none;
+  }
+
+  .hero-copy {
+    padding-top: 3rem;
+  }
+
+  .quick-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project-card {
+    position: static;
+  }
+
+  .video-img {
+    min-height: 42vh;
+  }
+}
+
+@media (max-width: 620px) {
+  .quick-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .property-carousel .slide-img {
+    height: 360px;
+  }
+
+  .sold-actions a {
+    width: 100%;
+  }
+}
