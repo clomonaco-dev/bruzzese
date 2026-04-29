@@ -1,694 +1,541 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
 <head>
-    <meta charset="utf-8">
-      <script>
-    var _iub = _iub || [];
-    _iub.csConfiguration = {
-      siteId: 3549719,
-      cookiePolicyId: 53462338,
-      lang: "it",
-      storage: { useSiteId: true },
-      banner: {
-        position: "bottom",
-        acceptButtonDisplay: true,
-        customizeButtonDisplay: true,
-        rejectButtonDisplay: true,
-        closeButtonDisplay: false
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Villetta moderna di nuova costruzione a Gozzano (NO), progetto residenziale indipendente vicino al lago e al centro con planimetrie, video e galleria immagini.">
+  <title>Villetta moderna a Gozzano | Costruzioni Bruzzese S.r.l.</title>
+
+  <link rel="apple-touch-icon" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/fav16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --dark:#171A20;
+      --cream:#F4F2E8;
+      --red:#801C1C;
+      --red2:#8E3832;
+      --white:#fff;
+      --muted:#d8d0bd;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--dark);font-family:'Urbanist',sans-serif;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    a:hover{color:var(--red2)}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif}
+
+    .site-header {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: min(1180px, calc(100% - 2rem));
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 1.5rem;
+      padding: .75rem 1rem;
+      border-radius: 1.2rem;
+      background: rgba(23,26,32,.92);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 18px 55px rgba(0,0,0,.25);
+      backdrop-filter: blur(12px);
+    }
+    .logo img { width: min(210px, 50vw); }
+    .nav-toggle {
+      display: none;
+      justify-self: end;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.4);
+      background: transparent;
+      border-radius: 999px;
+      padding: .45rem .85rem;
+      font-weight: 800;
+    }
+    .nav-menu {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: clamp(.7rem, 1.8vw, 1.6rem);
+    }
+    .nav-menu a {
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: clamp(.94rem, 1vw, 1.08rem);
+    }
+    .nav-menu a:last-child {
+      padding: .45rem .9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.45);
+    }
+
+    .wa-fixed{position:fixed;right:1rem;bottom:1rem;z-index:1200;width:clamp(58px,7vw,80px);filter:drop-shadow(0 10px 18px rgba(0,0,0,.25))}
+
+    .sold-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem}
+    .sold-modal.is-open{display:flex}
+    .sold-box{width:min(620px,94vw);background:var(--red);color:#fff;border-radius:18px;padding:clamp(2rem,5vw,3.2rem);text-align:center;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.45)}
+    .sold-box img{width:min(310px,85%);margin:0 auto 1.5rem}
+    .sold-box p{font-size:clamp(1.05rem,1.6vw,1.45rem);line-height:1.45;margin:0}
+    .sold-close{position:absolute;top:.7rem;right:1rem;border:0;background:transparent;color:#fff;font-size:2.4rem;line-height:1;cursor:pointer}
+
+    .hero-vendita{min-height:100vh;background:var(--dark);color:#fff;display:grid;grid-template-columns:.92fr 1.08fr;align-items:stretch}
+    .hero-copy{padding:clamp(8rem,12vw,12rem) clamp(1.5rem,5vw,5.5rem) 5rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+    .hero-copy:after{content:'A4';position:absolute;right:2vw;bottom:0;font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,22vw,23rem);line-height:.75;color:rgba(255,255,255,.045);pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:.65rem;width:fit-content;margin-bottom:1.2rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:.88rem}
+    .eyebrow:before{content:'';width:48px;height:1px;background:currentColor}
+    .hero-copy h1{font-size:clamp(3rem,6.8vw,7.2rem);line-height:.9;text-transform:uppercase;font-weight:700;margin:0;max-width:820px}
+    .hero-copy p{font-size:clamp(1.03rem,1.35vw,1.25rem);line-height:1.58;color:rgba(255,255,255,.82);max-width:710px;margin:1.4rem 0 0}
+    .hero-photo{position:relative;background:url('img/lavorazioni/1/copertina.jpg') center/cover no-repeat;min-height:100%;clip-path:polygon(9% 0,100% 0,100% 100%,0 100%)}
+    .hero-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,26,32,.03),rgba(23,26,32,.48))}
+    .sold-tag{position:absolute;z-index:2;top:clamp(6.8rem,12vw,9rem);right:clamp(1rem,4vw,3rem);background:var(--red);color:#fff;border-radius:999px;padding:.65rem 1rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;box-shadow:0 15px 40px rgba(0,0,0,.3)}
+    .actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
+    .btn-pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.72rem 1.1rem;border-radius:999px;border:1px solid currentColor;color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.88rem}
+    .btn-pill.fill{background:var(--red);border-color:var(--red)}
+    .btn-pill.dark{color:var(--dark)}
+
+    .quick-facts{display:grid;grid-template-columns:repeat(4,1fr);background:var(--red);color:#fff}
+    .fact{padding:clamp(1.2rem,3vw,2.4rem);border-right:1px solid rgba(255,255,255,.18)}
+    .fact strong{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3.8rem);line-height:.95;display:block}
+    .fact span{text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;display:block;margin-top:.55rem}
+
+    .section{padding:clamp(4rem,7vw,7rem) clamp(1.2rem,5vw,5rem)}
+    .title{font-size:clamp(2.6rem,5.8vw,6.4rem);line-height:.9;text-transform:uppercase;margin:0 0 2rem}
+    .copy{font-size:clamp(1rem,1.1vw,1.15rem);line-height:1.65}
+
+    .project-grid{display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;background:#fff}
+    .project-card{position:sticky;top:7rem;background:var(--cream);border-radius:1.5rem;padding:clamp(1.5rem,3vw,2.5rem);box-shadow:0 18px 50px rgba(23,26,32,.08)}
+    .project-card ul{list-style:none;padding:0;margin:1.3rem 0 0;display:grid;gap:.65rem}
+    .project-card li{position:relative;padding-left:1.35rem}
+    .project-card li:before{content:'';width:.45rem;height:.45rem;border-radius:50%;background:var(--red);position:absolute;left:0;top:.65rem}
+    .doc-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
+
+    .slider-wrap{overflow:hidden}
+    .property-carousel .slide-img{height:min(68vh,650px);width:100%;object-fit:cover;border-radius:1.2rem}
+    .owl-stage{display:flex;align-items:stretch}
+
+    .three-panels{background:var(--cream);display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .panel{background:#fff;border-radius:1.4rem;padding:clamp(1.4rem,3vw,2.2rem);box-shadow:0 16px 45px rgba(23,26,32,.08);min-height:370px;display:flex;flex-direction:column;justify-content:space-between}
+    .panel h3{font-size:clamp(1.8rem,3vw,3rem);line-height:.95;color:var(--red);margin:0 0 1rem}
+    .panel-mark{width:58px;height:58px;background:var(--red);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:900}
+
+    .video-section{background:var(--dark);color:#fff;display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+    .video-img{background:url('img/lavorazioni/1/foto-inserimento.jpg') center/cover no-repeat}
+    .video-copy{padding:clamp(3rem,6vw,6rem);display:flex;flex-direction:column;justify-content:center}
+    .video-copy p{color:rgba(255,255,255,.82)}
+
+    .footer{background:var(--red);color:#fff;padding:clamp(3rem,6vw,6rem) clamp(1.2rem,5vw,5rem)}
+    .footer-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,6rem)}
+    .footer-logo{width:min(520px,90vw);margin-bottom:2rem}
+    .contacts{display:grid;gap:1rem}.contacts strong{display:block}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.wide{grid-column:1/-1}
+    input,textarea{width:100%;border:1.5px solid rgba(255,255,255,.75);color:#fff!important;background:transparent;border-radius:.85rem;padding:.85rem 1rem;outline:none}
+    textarea{min-height:130px;resize:vertical}::placeholder{color:rgba(255,255,255,.86)}
+    .legal{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.5);color:rgba(255,255,255,.86);font-size:.92rem;line-height:1.55}
+
+
+    .sold-notice {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      background: rgba(23, 26, 32, .42);
+      backdrop-filter: blur(6px);
+    }
+
+    .sold-notice.is-open {
+      display: flex;
+    }
+
+    .sold-notice-card {
+      position: relative;
+      width: min(920px, 100%);
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      border-radius: 1.6rem;
+      background: #f4f2e8;
+      color: #171A20;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+      border: 1px solid rgba(23,26,32,.12);
+      animation: noticeUp .45s ease both;
+    }
+
+    .sold-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .9rem;
+      color: #801C1C;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+    }
+
+    .sold-kicker::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .sold-notice-card h2 {
+      margin: 0 0 .7rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: .9;
+      text-transform: uppercase;
+      color: #801C1C;
+    }
+
+    .sold-notice-card p {
+      max-width: 780px;
+      margin: .55rem 0;
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.55;
+    }
+
+    .sold-close {
+      position: absolute;
+      top: .8rem;
+      right: 1rem;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(23,26,32,.18);
+      border-radius: 50%;
+      background: #ffffff;
+      color: #801C1C;
+      font-size: 1.8rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .sold-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 1.3rem;
+    }
+
+    .sold-actions a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      padding: .7rem 1.1rem;
+      border-radius: 999px;
+      background: #801C1C;
+      color: #ffffff;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .85rem;
+    }
+
+    .sold-actions a:last-child {
+      background: transparent;
+      color: #801C1C;
+      border: 1.5px solid #801C1C;
+    }
+
+    @keyframes noticeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(.98);
       }
-    };
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .sold-notice {
+        align-items: center;
+      }
+
+      .sold-actions a {
+        width: 100%;
+      }
+    }
+
+    @media(max-width:991px){
+      .site-header { grid-template-columns: auto auto; }
+      .nav-toggle { display: inline-flex; }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 4.7rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background: var(--dark);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-menu.open { display: flex; }
+      .hero-vendita,.project-grid,.three-panels,.video-section,.footer-grid{grid-template-columns:1fr}
+      .hero-photo{min-height:48vh;order:-1;clip-path:none}.hero-copy{padding-top:3rem}
+      .quick-facts{grid-template-columns:1fr 1fr}.project-card{position:static}.video-img{min-height:42vh}
+    }
+    @media(max-width:620px){.quick-facts,.form-grid{grid-template-columns:1fr}.property-carousel .slide-img{height:360px}}
+  </style>
+
+  <script>
+    var _iub = _iub || [];
+    _iub.csConfiguration = { siteId: 3549719, cookiePolicyId: 53462338, lang: 'it', storage: { useSiteId: true }, banner: { position: 'bottom', acceptButtonDisplay: true, customizeButtonDisplay: true, rejectButtonDisplay: true, closeButtonDisplay: false } };
   </script>
   <script src="https://cdn.iubenda.com/cs/iubenda_cs.js" async></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Un progetto esclusivo a pochi passi dal lago e dal centro, pensato per chi cerca uno stile di vita indipendente, efficiente e immerso nella tranquillità" />
-    <link rel="apple-touch-icon" href="favicon/fav32.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="favicon/fav72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/fav114.png" />
-    <link rel="icon" type="image/png" href="favicon/fav32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon/fav16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="favicon/fav48.png" sizes="48x48" />
-    <title>Villetta Moderna Di Nuova Costruzione a Gozzano (NO) - Costruzioni Bruzzese S.r.l</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="css/jquery.fancybox.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/slick.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NQVSK7TF');</script>
-<!-- End Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NQVSK7TF');
+  </script>
 </head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<body class="" style="background-color: #F4F2E8; overflow-x:hidden;">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <a href="https://api.whatsapp.com/send?phone=393484277541"
-        onclick="ga('send', 'event', 'Click WhatsApp', 'Click WhatsApp');" title="WhatsApp" target="_blank"
-        class="contatti"><img class="img-fluid wa" src="img/wa.png"></a>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img class="img-fluid logo-nav" src="img/logo.svg"
-                    alt="logo-nav"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html#chisiamo" title="Chi siamo">Chi siamo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-civile.html" title="Edilizia Civile">Edilizia Civile </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-industriale.html" title="Edilizia Industriale">Edilizia
-                            Industriale </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="villetta-curva.html" title="Vendite">Vendite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contatti" title="Contatti">Contatti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/costruzionibruzzese/" title="Instagram"
-                            target="_blank"><i class="fab fa-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <a class="wa-fixed" href="https://api.whatsapp.com/send?phone=393484277541" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/wa.png" alt="WhatsApp"></a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Costruzioni Bruzzese home">
+      <img src="img/logo.svg" alt="Costruzioni Bruzzese S.r.l.">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainMenu">Menu</button>
+    <nav class="nav-menu" id="mainMenu" aria-label="Navigazione principale">
+      <a href="index.html#storia">Chi siamo</a>
+      <a href="edilizia-civile.html">Edilizia civile</a>
+      <a href="edilizia-industriale.html">Edilizia industriale</a>
+      <a href="villetta-curva.html">Vendite</a>
+      <a href="https://www.instagram.com/costruzionibruzzese/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#contatti">Contatti</a>
     </nav>
+  </header>
 
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img class="img-fluid top-modal mx-auto d-block" src="img/top-modal.svg">
-    <p>Questa villetta è già stata venduta, ma il progetto è ancora visibile per lasciarti ispirare.<br><br>
-<strong>Stiamo lavorando a nuove proposte:<br> presto arriveranno altre opportunità</strong>.</p>
+  <div class="sold-notice" id="soldModal" role="dialog" aria-modal="true">
+    <div class="sold-notice-card">
+      <button class="sold-close" type="button" aria-label="Chiudi">×</button>
+
+      <span class="sold-kicker">Aggiornamento disponibilità</span>
+
+      <h2>Villetta già venduta</h2>
+
+      <p>
+        Il progetto resta online come esempio delle nostre realizzazioni e come fonte di ispirazione.
+      </p>
+
+      <p>
+        Stiamo preparando nuove proposte residenziali: torna presto o contattaci per ricevere aggiornamenti.
+      </p>
+
+      <div class="sold-actions">
+        <a href="#galleria">Guarda il progetto</a>
+        <a href="#form">Richiedi informazioni</a>
+      </div>
+    </div>
   </div>
-</div>
 
-    <section style="background-color:#171A20">
-        <div class="container-fluid">
-            <div class="row">
-
-                <div class="col-md-6 col-12 box-casa  order-md-1 order-2">
-                    <h1 class="h1-case">Villetta Moderna Di Nuova Costruzione a Gozzano (NO)</h1>
-                    <p class="txt-pag">Design contemporaneo, comfort di nuova generazione<br>
-                        Un progetto esclusivo a pochi passi dal lago e dal centro, pensato per chi cerca uno stile di
-                        vita indipendente, efficiente e immerso nella tranquillità.
-                    </p>
-                    <p class="txt-pag">A <a class="link-red" href="https://maps.app.goo.gl/xPGsjCk1dSebS3EP9"
-                            target="_blank">Gozzano (NO), in via Baraggiola 50</a>, nasce una villetta dal design
-                        moderno e dalle linee pulite, parte di un piccolo complesso residenziale di nuova
-                        costruzione.<br>
-                        Un’abitazione su un unico piano, progettata per offrire comfort, efficienza energetica e qualità
-                        costruttiva di livello superiore.<br>
-                        Ogni dettaglio, dal tetto curvo con travi a vista all’impianto fotovoltaico da 6,85 kWp, è
-                        pensato per garantire benessere quotidiano e valore nel tempo.
-                    </p>
-
-                    <p><a class="btn-red" href="img/lavorazioni/1/presentazione.mp4"
-                            data-fancybox="video-presentazine"><i class="fas fa-play fa-xs"></i> Guarda il video di
-                            presentazione</a></p>
-                    <p class="txt-pag"><strong>Contattaci per ricevere maggiori informazioni:</strong><br><br>
-                        <a class="btn-red" href="tel:+393355930037"><i class="fas fa-phone fa-xs"></i> 335 5930037</a><a
-                            class="btn-red" href="tel:+393484277541"><i class="fas fa-phone fa-xs"></i> 348 4277541</a>
-                        <a class="btn-red" href="#form">Scrivici</a>
-                    </p>
-                </div>
-                <div class="col-md-6 col-12 back-vendita order-md-2 order-1">
-                    <div href="img/lavorazioni/1/foto-inserimento.jpg" data-fancybox="gallery-villetta-curva"
-                        style="height: 100%;"></div>
-                </div>
-            </div>
+  <main>
+    <section class="hero-vendita">
+      <div class="hero-copy">
+        <span class="eyebrow">Vendite / nuova costruzione</span>
+        <h1>Villetta moderna a Gozzano</h1>
+        <p>Design contemporaneo, comfort di nuova generazione e una posizione tranquilla a pochi passi dal centro e dal Lago d’Orta.</p>
+        <p>A <a href="https://maps.app.goo.gl/xPGsjCk1dSebS3EP9" target="_blank" rel="noopener" style="color:#dca29d;font-weight:800">Gozzano, in via Baraggiola 50</a>, una villetta su un unico piano con tetto curvo, travi a vista, impianto fotovoltaico e spazi progettati per durare nel tempo.</p>
+        <div class="actions">
+          <a class="btn-pill fill" href="img/lavorazioni/1/presentazione.mp4" data-fancybox="video-presentazione">Guarda il video</a>
+          <a class="btn-pill" href="#galleria">Vedi immagini</a>
+          <a class="btn-pill" href="#planimetrie">Planimetrie</a>
+          <a class="btn-pill" href="#form">Scrivici</a>
         </div>
+      </div>
+      <a class="hero-photo" href="img/lavorazioni/1/foto-inserimento.jpg" data-fancybox="gallery-villetta-curva" aria-label="Immagine principale villetta">
+        <span class="sold-tag">Venduta</span>
+      </a>
     </section>
 
-    <section style="background-color:#fff">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 box-vendita">
-                    <div class="owl-carousel">
-                        <a href="img/lavorazioni/1/1.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/1.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/2.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/2.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/3.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/3.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/4.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/4.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/5.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/5.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/6.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/6.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/7.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/7.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="img/lavorazioni/1/8.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/8.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/9.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/9.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/10.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/10.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/11.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/11.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/12.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/12.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/13.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/13.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/14.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/14.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/15.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/15.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="img/lavorazioni/1/16.jpg" data-fancybox="gallery-villetta-curva">
-                            <div class="item sp-card-slider">
-                                <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="img/lavorazioni/1/16.jpg" class="img-fluid center-block"
-                                                        alt="Villetta curva">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 box-vendita">
-                    <h2 class="blu sottotitolo-costruzione"><strong>Caratteristiche principali</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                    <ul class="txt-pag blu">
-                        <li>Superficie abitativa di circa 100 m² su un unico piano;</li>
-                        <li>Giardino privato pianeggiante di circa 220 m²;</li>
-                        <li>Zona giorno luminosa con soffitto curvo alto;</li>
-                        <li>3 camere (una matrimoniale con bagno padronale) e 2 bagni totali;</li>
-                        <li>Autorimessa doppia collegata internamente;</li>
-                        <li>Classe energetica A4 con impianto fotovoltaico da 6,85 kWp;</li>
-                        <li>Riscaldamento a pavimento e caldaia ibrida gas/elettrica;</li>
-                        <li>Predisposizione per raffrescamento, allarme e domotica;</li>
-                        <li>Finiture e colori personalizzabili in corso d'opera.</li>
-                    </ul>
-                    </p>
-                    <br>
-                    <a class="btn-blu" href="img/lavorazioni/1/planimetria-interno.pdf" target="_blank"
-                        title="Planimetria">Planimetria</a>
-                    <a class="btn-blu" href="img/lavorazioni/1/planimetria-prospetti.pdf" target="_blank"
-                        title="Prospetti">Prospetti</a>
-                </div>
-            </div>
-        </div>
+    <section class="quick-facts">
+      <div class="fact"><strong>100 m²</strong><span>abitativi circa</span></div>
+      <div class="fact"><strong>220 m²</strong><span>giardino privato</span></div>
+      <div class="fact"><strong>A4</strong><span>classe energetica</span></div>
+      <div class="fact"><strong>6,85 kWp</strong><span>fotovoltaico</span></div>
     </section>
 
-
-
-    <section style="background-color:#f4f2e8;">
-        <div class="container-fluid">
-            <div class="row">
-
-                <div class="col-md-4 box-pag-lav">
-                    <h2 class="blu sottotitolo-costruzione"><strong>Posizione e contesto</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">La villetta si trova in una zona residenziale tranquilla e ben
-                        collegata: a pochi passi dal centro di Gozzano e a 5 minuti dal Lago d’Orta.<br>
-                        La pista ciclo-pedonale adiacente collega il quartiere al centro paese e, presto, anche a
-                        Borgomanero e al lago.
-                        Un contesto ideale per chi cerca la privacy di una casa indipendente senza rinunciare alla
-                        comodità dei servizi e della vita quotidiana.
-                    </p>
-                </div>
-
-                <div class="col-md-4 box-pag-lav">
-                    <h2 class="blu sottotitolo-costruzione"><strong>Architettura e materiali</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">La struttura è realizzata in blocchi di gasbeton da 40 cm, che
-                        garantiscono un elevato isolamento termico e acustico.<br>
-                        Il tetto curvo realizzato con copertura in alluminio a doppia aggraffatura, pacchetto isolante e
-                        travi a vista, conferisce all’abitazione un carattere unico e contemporaneo.<br>
-                        Ogni elemento è pensato per unire design, efficienza e durabilità: materiali innovativi,
-                        impianti di ultima generazione e una costruzione di qualità artigianale.
-
-                </div>
-
-                <div class="col-md-4 box-pag-lav">
-                    <h2 class="blu sottotitolo-costruzione"><strong>Vivere qui</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">Immagina di vivere in una casa che combina comfort moderno,
-                        indipendenza e natura.<br>
-                        Una casa dove la luce naturale riempie ogni ambiente, dove gli spazi sono progettati per il
-                        benessere e dove la tecnologia lavora per te.<br>
-                        Questa villetta rappresenta un nuovo modo di abitare: sostenibile, elegante e pensato per il
-                        futuro.
-
-                    </p>
-                </div>
-            </div>
+    <section class="section project-grid" id="galleria">
+      <aside class="project-card" id="planimetrie">
+        <span class="eyebrow" style="color:var(--red)">Caratteristiche</span>
+        <h2 class="title">Una casa su misura</h2>
+        <p class="copy">Un’abitazione indipendente, luminosa e pratica, pensata per unire architettura contemporanea, efficienza energetica e qualità costruttiva.</p>
+        <ul class="copy">
+          <li>Superficie abitativa di circa 100 m² su un unico piano</li>
+          <li>Giardino privato pianeggiante di circa 220 m²</li>
+          <li>Zona giorno luminosa con soffitto curvo alto</li>
+          <li>3 camere, una matrimoniale con bagno padronale</li>
+          <li>2 bagni totali e autorimessa doppia collegata internamente</li>
+          <li>Riscaldamento a pavimento e caldaia ibrida gas/elettrica</li>
+          <li>Predisposizione per raffrescamento, allarme e domotica</li>
+          <li>Finiture e colori personalizzabili in corso d’opera</li>
+        </ul>
+        <div class="doc-links">
+          <a class="btn-pill dark" href="img/lavorazioni/1/planimetria-interno.pdf" target="_blank" rel="noopener">Planimetria</a>
+          <a class="btn-pill dark" href="img/lavorazioni/1/planimetria-prospetti.pdf" target="_blank" rel="noopener">Prospetti</a>
         </div>
+      </aside>
+
+      <div class="slider-wrap">
+        <div class="owl-carousel property-carousel">
+          <a href="img/lavorazioni/1/1.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/1.jpg" alt="Villetta moderna Gozzano 1"></a>
+          <a href="img/lavorazioni/1/2.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/2.jpg" alt="Villetta moderna Gozzano 2"></a>
+          <a href="img/lavorazioni/1/3.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/3.jpg" alt="Villetta moderna Gozzano 3"></a>
+          <a href="img/lavorazioni/1/4.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/4.jpg" alt="Villetta moderna Gozzano 4"></a>
+          <a href="img/lavorazioni/1/5.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/5.jpg" alt="Villetta moderna Gozzano 5"></a>
+          <a href="img/lavorazioni/1/6.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/6.jpg" alt="Villetta moderna Gozzano 6"></a>
+          <a href="img/lavorazioni/1/7.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/7.jpg" alt="Villetta moderna Gozzano 7"></a>
+          <a href="img/lavorazioni/1/8.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/8.jpg" alt="Villetta moderna Gozzano 8"></a>
+          <a href="img/lavorazioni/1/9.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/9.jpg" alt="Villetta moderna Gozzano 9"></a>
+          <a href="img/lavorazioni/1/10.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/10.jpg" alt="Villetta moderna Gozzano 10"></a>
+          <a href="img/lavorazioni/1/11.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/11.jpg" alt="Villetta moderna Gozzano 11"></a>
+          <a href="img/lavorazioni/1/12.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/12.jpg" alt="Villetta moderna Gozzano 12"></a>
+          <a href="img/lavorazioni/1/13.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/13.jpg" alt="Villetta moderna Gozzano 13"></a>
+          <a href="img/lavorazioni/1/14.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/14.jpg" alt="Villetta moderna Gozzano 14"></a>
+          <a href="img/lavorazioni/1/15.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/15.jpg" alt="Villetta moderna Gozzano 15"></a>
+          <a href="img/lavorazioni/1/16.jpg" data-fancybox="gallery-villetta-curva"><img class="slide-img" src="img/lavorazioni/1/16.jpg" alt="Villetta moderna Gozzano 16"></a>
+        </div>
+      </div>
     </section>
 
-
-
-    <section style=" background-color:#801C1C" id="contatti">
-        <div class="container">
-            <div class="row sp-foot">
-                <div class="col-md-12">
-                    <img class="img-fluid logo-foot" src="img/logo-foot.svg" alt="logo-footer">
-                </div>
-                <div class="col-md-4">
-                    <p class="tit-foot">Contatti</p>
-                    <p class="txt-foot"><strong>Bruzzese Raimondo</strong></p>
-                    <p class="txt-foot"><a href="tel:+393355930037" class="txt-foot" title="Telefono"><i
-                                class="fas fa-phone fa-xs"></i> 335 5930037</a></p>
-                    <p class="txt-foot"><strong>Geom. Bruzzese Denis</strong></p>
-                    <p class="txt-foot"><a href="tel:+393484277541" class="txt-foot" title="Telefono"><i
-                                class="fas fa-phone fa-xs"></i> 348 4277541</a></p>
-                    <br>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@gmail.com" title="Mail"
-                            class="txt-foot"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@gmail.com</a>
-                    </p>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@legalmail.it" class="txt-foot"
-                            title="Mail"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@legalmail.it</a>
-                    </p>
-                    <p class="txt-foot"><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank"
-                            class="txt-foot"><i class="fas fa-map-marker-alt fa-xs"></i> Via dei Martiri delle Foibe 7 -
-                            Gozzano</a></p>
-                </div>
-
-                <div class="col-md-4">
-                    <p class="tit-foot">Corsi e certificazioni</p>
-                    <p class="txt-foot">Macchine movimento terra</p>
-                    <p class="txt-foot">Conduzione di piattaforme mobili elevabili</p>
-                    <p class="txt-foot">Carrelli elevatori telescopici</p>
-                    <p class="txt-foot">Spazi confinanti</p>
-                    <p class="txt-foot">Gru a torre</p>
-                    <p class="txt-foot">Ponteggi</p>
-                </div>
-
-                <div class="col-md-4">
-                    <p class="tit-foot">Categorie lavori:</p>
-                    <p class="txt-foot">OG1: edifici civili e industriali</p>
-                    <p class="txt-foot">OG3: strade, autostrade, ponti, viadotti, ferrovie, metropolitane.</p>
-                    <p class="tit-foot">Servizi:</p>
-                    <p class="txt-foot">Pulizia delle strade e servizi invernali</p>
-                    <p class="txt-foot">Operazioni cimiteriali</p>
-                </div>
-
-                <div class="col-md-10 offset-md-1 sp-form" id="form">
-                    <p class="tit-foot">Scrivici</p>
-                    <form id="contactForm" 		  
-						  data-netlify="true"
-						  netlify
-					>
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-
-                                    <input type="email" class="form-control" name="formEmail" id="formEmail"
-                                        aria-describedby="emailHelp" placeholder="Mail">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="tele" class="form-control" name="formTelefono" id="formTelefono"
-                                        aria-describedby="emailHelp" placeholder="Telefono">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="nome" class="form-control" name="formNome" id="formNome"
-                                        placeholder="Nome">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="cognome" class="form-control" name="formCognome" id="formCognome"
-                                        placeholder="Cognome">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="formMessaggio" rows="3"
-                                        placeholder="Scrivici"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <div class="d-none form-control success-message w-form-done" tabindex="-1"
-                                        role="region" aria-label="Email Form success">
-                                        <div class="text-block-2">La tua richiesta è stata inviata, risponderemo nel
-                                            minor tempo
-                                            possibile</div>
-                                    </div>
-                                    <div class="d-none form-control error-message w-form-fail" tabindex="-1"
-                                        role="region" aria-label="Email Form failure">
-                                        <div class="text-block-3">Qualcosa è andato storto, ricontrolla i dati che hai
-                                            inserito
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" value="accept" placeholder="Consenso"
-                                        name="privacyAcceptContact" id="privacyAcceptContact" class="form-check-input"
-                                        required>
-                                    <label for="privacyAcceptContact" class="white form-check-label">Dichiaro di aver
-                                        letto l'<a href="https://www.iubenda.com/privacy-policy/53462338"
-                                            class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe"
-                                            title="Privacy Policy">informativa privacy</a> ed esprimo il mio consenso al
-                                        trattamento dei dati per le finalità indicate.</label>
-                                </div>
-                                <input type="submit" class="form-control btn" value="INVIA" id="sendBtn">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 brd-top">
-                        <br>
-                        <p class="txt-foot">Costruzioni Bruzzese S.r.l | Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 -
-                            28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a
-                                href="https://www.iubenda.com/privacy-policy/53462338"
-                                class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
-                                title="Privacy Policy ">Privacy Policy</a> | <a
-                                href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy"
-                                class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
-                                title="Cookie Policy ">Cookie Policy</a> | <a href='#'
-                                class='iubenda-cs-preferences-link'> Le tue preferenze relative alla privacy</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="section three-panels">
+      <article class="panel">
+        <div><h3>Posizione e contesto</h3><p class="copy">Zona residenziale tranquilla e ben collegata, vicino al centro di Gozzano e a pochi minuti dal Lago d’Orta. La pista ciclo-pedonale adiacente collega il quartiere ai servizi principali.</p></div>
+        <a class="btn-pill dark" href="https://maps.app.goo.gl/xPGsjCk1dSebS3EP9" target="_blank" rel="noopener">Apri mappa</a>
+      </article>
+      <article class="panel">
+        <div><h3>Architettura e materiali</h3><p class="copy">Blocchi in gasbeton da 40 cm, copertura curva in alluminio a doppia aggraffatura, pacchetto isolante e travi a vista: materiali scelti per isolamento, carattere e durata.</p></div>
+        <span class="panel-mark">A4</span>
+      </article>
+      <article class="panel">
+        <div><h3>Vivere qui</h3><p class="copy">Una casa indipendente dove luce naturale, tecnologia, comfort e natura lavorano insieme per un nuovo modo di abitare: sostenibile, elegante e pensato per il futuro.</p></div>
+        <span class="panel-mark">6,85</span>
+      </article>
     </section>
-    <script src="js/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/brands.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/solid.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/fontawesome.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/slick.js" async defer></script>
-    <script src="js/main.js"></script>
-    <script src="js/form.js" async defer></script>
 
+    <section class="video-section">
+      <div class="video-img" role="img" aria-label="Anteprima video villetta"></div>
+      <div class="video-copy">
+        <span class="eyebrow">Video</span>
+        <h2 class="title">Guarda la presentazione</h2>
+        <p class="copy">Un contenuto rapido per vedere il progetto, gli spazi e l’idea abitativa della villetta.</p>
+        <div class="actions">
+          <a class="btn-pill fill" href="img/lavorazioni/1/presentazione.mp4" data-fancybox="video-villetta">Apri video</a>
+          <a class="btn-pill" href="tel:+393484277541">348 4277541</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="footer" id="contatti">
+    <div class="footer-grid">
+      <section>
+        <img class="footer-logo" src="img/logo-foot.svg" alt="Costruzioni Bruzzese S.r.l.">
+        <div class="contacts">
+          <p><strong>Bruzzese Raimondo</strong><a href="tel:+393355930037">335 5930037</a></p>
+          <p><strong>Geom. Bruzzese Denis</strong><a href="tel:+393484277541">348 4277541</a></p>
+          <p><strong>Email</strong><a href="mailto:costruzionibruzzesesrl@gmail.com">costruzionibruzzesesrl@gmail.com</a><br><a href="mailto:costruzionibruzzesesrl@legalmail.it">costruzionibruzzesesrl@legalmail.it</a></p>
+          <p><strong>Sede</strong><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" rel="noopener">Via dei Martiri delle Foibe 7 - Gozzano</a></p>
+        </div>
+      </section>
+      <section id="form">
+        <span class="eyebrow">Contatti</span>
+        <h2 class="title">Scrivici</h2>
+        <form name="contatti" data-netlify="true" netlify>
+          <div class="form-grid">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="cognome" placeholder="Cognome">
+            <input type="email" name="email" placeholder="Mail" required>
+            <input type="tel" name="telefono" placeholder="Telefono">
+            <textarea class="wide" name="messaggio" placeholder="Messaggio" required></textarea>
+            <label class="wide" style="display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;line-height:1.45">
+              <input type="checkbox" name="privacy" value="accept" required style="width:auto;margin-top:.25rem">
+              <span>Dichiaro di aver letto l’<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">informativa privacy</a> ed esprimo il consenso al trattamento dei dati per le finalità indicate.</span>
+            </label>
+            <button class="btn-primary" type="submit">
+              Invia richiesta
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <div class="legal">Costruzioni Bruzzese S.r.l | Copyright © <span id="year"></span> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Cookie Policy</a> | <a href="#" class="iubenda-cs-preferences-link">Le tue preferenze relative alla privacy</a></div>
+  </footer>
 
-    <script>
-        $('.owl-carousel').owlCarousel({
-            stagePadding: 30,
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            nav: false,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1.1,
-                    stagePadding: 0
-                },
-                800: {
-                    items: 2.1,
-                    stagePadding: 2
-                }
-            }
-        })
-    </script>
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    <script>
-        window.addEventListener("load", function() {
-  const modal = document.getElementById("modal");
-  const closeBtn = document.querySelector(".close");
+    const navButton = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('#mainMenu');
+    navButton.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
 
-  // apre automaticamente
-  modal.style.display = "block";
+    $('.property-carousel').owlCarousel({
+      stagePadding: 30,
+      loop: true,
+      margin: 16,
+      autoplay: true,
+      autoplayTimeout: 4200,
+      nav: false,
+      dots: false,
+      responsive: { 0: { items: 1.05, stagePadding: 0 }, 800: { items: 1.55, stagePadding: 12 }, 1200: { items: 1.75, stagePadding: 30 } }
+    });
 
-  // chiudi cliccando X
-  closeBtn.onclick = function() {
-    modal.style.display = "none";
-  };
+  window.addEventListener('load', () => {
+    const modal = document.getElementById('soldModal');
+    const close = modal.querySelector('.sold-close');
+    const modalLinks = modal.querySelectorAll('.sold-actions a');
 
-  // chiudi cliccando fuori
-  window.onclick = function(e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  };
-});
-    </script>
+    modal.classList.add('is-open');
+
+    close.addEventListener('click', () => {
+      modal.classList.remove('is-open');
+    });
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.classList.remove('is-open');
+      }
+    });
+
+    modalLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        modal.classList.remove('is-open');
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        modal.classList.remove('is-open');
+      }
+    });
+  });
+  </script>
 </body>
-
 </html>

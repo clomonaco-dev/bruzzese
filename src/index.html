@@ -1,8 +1,485 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Costruzioni Bruzzese S.r.l. è un'impresa edile di Gozzano (NO), attiva dal 1986 in edilizia civile, industriale, ristrutturazioni e servizi per privati, aziende ed enti pubblici.">
+  <link rel="canonical" href="https://costruzionibruzzesesrl.it/">
+  <title>Costruzioni Bruzzese S.r.l. | Impresa edile a Gozzano</title>
+
+  <link rel="apple-touch-icon" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/fav16.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/jquery.fancybox.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --blueblack: #171a20;
+      --cream: #f4f2e8;
+      --wine: #801c1c;
+      --brick: #8e3832;
+      --sand: #ded8c5;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--blueblack);
+      font-family: "Urbanist", system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    a:hover { color: var(--brick); }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 2rem));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem 1rem;
+      background: rgba(23, 26, 32, .88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.24);
+    }
+    .brand img { width: min(210px, 48vw); }
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(255,255,255,.35);
+      background: transparent;
+      color: var(--white);
+      border-radius: 999px;
+      padding: .45rem .8rem;
+    }
+    .menu { display: flex; align-items: center; gap: clamp(.6rem, 1.8vw, 1.8rem); }
+    .menu a {
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: clamp(.92rem, 1vw, 1.08rem);
+    }
+    .menu a:last-child {
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 999px;
+      padding: .45rem .9rem;
+    }
+
+    .whatsapp {
+      position: fixed;
+      z-index: 80;
+      right: 1rem;
+      bottom: 1rem;
+      width: clamp(56px, 6vw, 76px);
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.28));
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(360px, .75fr);
+      background: var(--blueblack);
+      color: var(--white);
+    }
+    .hero-copy {
+      padding: clamp(8rem, 14vw, 13rem) clamp(1.4rem, 6vw, 6rem) 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-copy::after {
+      content: "1986";
+      position: absolute;
+      right: 2vw;
+      bottom: 2vw;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(5rem, 17vw, 18rem);
+      line-height: .8;
+      color: rgba(255,255,255,.045);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      gap: .6rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--sand);
+    }
+    .eyebrow::before { content: ""; width: 48px; height: 1px; background: currentColor; }
+    .hero h1 {
+      max-width: 880px;
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 7.5vw, 8rem);
+      line-height: .88;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero p {
+      max-width: 620px;
+      margin: 1.5rem 0 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+      line-height: 1.45;
+      color: rgba(255,255,255,.82);
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.3rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .9rem;
+    }
+    .button.primary { background: var(--wine); border-color: var(--wine); color: var(--white); }
+    .button.light { color: var(--white); }
+    .hero-media {
+      min-height: 100%;
+      background: linear-gradient(180deg, rgba(23,26,32,.05), rgba(23,26,32,.55)), url("img/head.jpg") right bottom / cover no-repeat;
+      clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--wine);
+      color: var(--white);
+    }
+    .stat-box { padding: clamp(1.3rem, 3vw, 2.4rem); border-right: 1px solid rgba(255,255,255,.18); }
+    .stat-box strong { display: block; font-size: clamp(1.8rem, 4vw, 4rem); font-family: "Cormorant Garamond", serif; line-height: .9; }
+    .stat-box span { display: block; margin-top: .65rem; font-size: .95rem; text-transform: uppercase; letter-spacing: .08em; }
+
+    .section { padding: clamp(4rem, 8vw, 8rem) clamp(1.2rem, 5vw, 5rem); }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 6vw, 6.6rem);
+      line-height: .9;
+      text-transform: uppercase;
+      margin: 0 0 2rem;
+    }
+    .text { font-size: clamp(1rem, 1.15vw, 1.18rem); line-height: 1.65; }
+    .red { color: var(--brick); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .about-card {
+      position: sticky;
+      top: 7rem;
+      background: var(--white);
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border-radius: 1.4rem;
+      box-shadow: 0 24px 70px rgba(23,26,32,.12);
+    }
+    .about-card img { border-radius: 1rem; aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+    .about-card p { margin: 1rem 0 0; font-weight: 700; }
+    .timeline { display: grid; gap: 1.2rem; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem 0 1.4rem 1.5rem;
+      border-left: 3px solid var(--wine);
+    }
+    .timeline-item h3 { margin: 0; font-size: 1.2rem; font-weight: 900; color: var(--wine); }
+    .timeline-item p { margin: 0; }
+
+    .services {
+      background: var(--blueblack);
+      color: var(--white);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+    .service-card {
+      min-height: 620px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 1.6rem;
+      background: var(--blueblack);
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--image) center / cover no-repeat;
+      transform: scale(1.02);
+      transition: transform .35s ease;
+    }
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.82));
+    }
+    .service-card:hover::before { transform: scale(1.08); }
+    .service-content { padding: clamp(1.5rem, 4vw, 3rem); }
+    .service-content h3 {
+      margin: 0 0 1rem;
+      font-family: "Cormorant Garamond", serif;
+      text-transform: uppercase;
+      font-size: clamp(2.4rem, 5vw, 5.5rem);
+      line-height: .9;
+    }
+    .service-content p { max-width: 620px; color: rgba(255,255,255,.85); }
+
+    .gallery-section {
+      display: grid;
+      grid-template-columns: .62fr 1.38fr;
+      min-height: 85vh;
+      background: var(--cream);
+    }
+    .gallery-aside {
+      padding: clamp(3rem, 6vw, 6rem);
+      background: var(--sand);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .gallery-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 210px;
+      gap: .65rem;
+      padding: .65rem;
+    }
+    .gallery-board a { overflow: hidden; border-radius: .9rem; background: #ddd; }
+    .gallery-board img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .gallery-board a:hover img { transform: scale(1.07); }
+    .gallery-board a:nth-child(1), .gallery-board a:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+    .gallery-board a:nth-child(4), .gallery-board a:nth-child(9) { grid-row: span 2; }
+
+    .credentials {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.4rem, 4vw, 3rem);
+    }
+    .info-panel {
+      background: var(--white);
+      border-radius: 1.4rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      box-shadow: 0 18px 50px rgba(23,26,32,.09);
+    }
+    .info-panel h3 { margin-top: 0; font-size: clamp(1.35rem, 2vw, 2rem); color: var(--wine); }
+    .pill-list { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.2rem; }
+    .pill { border: 1px solid rgba(23,26,32,.18); border-radius: 999px; padding: .55rem .85rem; background: var(--cream); }
+
+    .footer {
+      background: var(--wine);
+      color: var(--white);
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 5vw, 5rem);
+    }
+    .footer-main {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .footer-logo { width: min(520px, 90vw); margin-bottom: 2rem; }
+    .footer a { color: var(--white); }
+    .contact-list { display: grid; gap: 1rem; }
+    .contact-list strong { display: block; font-size: 1.1rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .wide { grid-column: 1 / -1; }
+    input, textarea {
+      width: 100%;
+      border: 1.5px solid rgba(255,255,255,.75);
+      color: var(--white) !important;
+      background: transparent;
+      border-radius: .85rem;
+      padding: .85rem 1rem;
+      outline: none;
+    }
+    ::placeholder { color: rgba(255,255,255,.85); }
+    textarea { min-height: 130px; resize: vertical; }
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.5);
+      font-size: .92rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.86);
+    }
+
+    .gallery-board {
+        display: block;
+        padding: clamp(2rem, 5vw, 5rem);
+    }
+
+    .coverflow-slider {
+    position: relative;
+    min-height: 620px;
+    display: grid;
+    place-items: center;
+    perspective: 1600px;
+    overflow: hidden;
+    }
+
+    .slider-stage {
+    position: relative;
+    width: min(760px, 82vw);
+    height: min(560px, 62vw);
+    transform-style: preserve-3d;
+    }
+
+    .slide {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.4rem;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.28);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(0) scale(.65) translateZ(-360px);
+    transition: transform .55s ease, opacity .55s ease, filter .55s ease;
+    }
+
+    .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .slide.active {
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translateX(0) scale(1) translateZ(120px);
+    }
+
+    .slide.prev {
+    opacity: .62;
+    z-index: 3;
+    transform: translateX(-46%) rotateY(28deg) scale(.78) translateZ(-180px);
+    filter: brightness(.72);
+    }
+
+    .slide.next {
+    opacity: .62;
+    z-index: 3;
+    transform: translateX(46%) rotateY(-28deg) scale(.78) translateZ(-180px);
+    filter: brightness(.72);
+    }
+
+    .slide.far-prev {
+    opacity: .18;
+    transform: translateX(-76%) rotateY(38deg) scale(.58) translateZ(-360px);
+    }
+
+    .slide.far-next {
+    opacity: .18;
+    transform: translateX(76%) rotateY(-38deg) scale(.58) translateZ(-360px);
+    }
+
+    .slider-btn {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(23,26,32,.2);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--wine);
+    font-size: 2.4rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .slider-btn.prev { left: clamp(.5rem, 3vw, 2rem); }
+    .slider-btn.next { right: clamp(.5rem, 3vw, 2rem); }
+
+    .slide,
+    .slide img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    user-select: none;
+    }
+
+    .slider-stage {
+    cursor: grab;
+    touch-action: pan-y;
+    }
+
+    .slider-stage.is-dragging {
+    cursor: grabbing;
+    }
+
+    @media (max-width: 760px) {
+    .coverflow-slider { min-height: 440px; }
+    .slider-stage {
+        width: 78vw;
+        height: 360px;
+    }
+    .slide.prev {
+        transform: translateX(-34%) rotateY(20deg) scale(.72) translateZ(-160px);
+    }
+    .slide.next {
+        transform: translateX(34%) rotateY(-20deg) scale(.72) translateZ(-160px);
+    }
+    }
+
+    @media (max-width: 980px) {
+      .topbar { border-radius: 1.2rem; align-items: flex-start; }
+      .menu-toggle { display: inline-flex; }
+      .menu { display: none; position: absolute; left: 1rem; right: 1rem; top: 4.7rem; padding: 1rem; border-radius: 1rem; background: var(--blueblack); flex-direction: column; align-items: flex-start; }
+      .menu.is-open { display: flex; }
+      .hero, .about-layout, .gallery-section, .credentials, .footer-main { grid-template-columns: 1fr; }
+      .hero-media { min-height: 42vh; clip-path: none; order: -1; }
+      .hero-copy { padding-top: 3rem; }
+      .stats-strip, .service-grid { grid-template-columns: 1fr 1fr; }
+      .about-card { position: static; }
+      .gallery-board { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+    }
+
+    @media (max-width: 620px) {
+      .stats-strip, .service-grid, .form-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 500px; }
+      .timeline-item { grid-template-columns: 1fr; gap: .4rem; }
+      .gallery-board { grid-auto-rows: 145px; }
+      .gallery-board a:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
 
   <script>
     var _iub = _iub || [];
@@ -22,741 +499,349 @@
   </script>
   <script src="https://cdn.iubenda.com/cs/iubenda_cs.js" async></script>
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Costruzioni Bruzzese S.r.l. è un'impresa edile di Gozzano (NO) che vanta oltre 35 anni di esperienza nel settore di costruzioni civili ed industriali, con un'attenzione particolare alla qualità e alla versatilità." />
-  <link rel="canonical" href="https://costruzionibruzzesesrl.it/" />
-  <link rel="apple-touch-icon" href="favicon/fav32.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="favicon/fav72.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="favicon/fav114.png" />
-  <link rel="icon" type="image/png" href="favicon/fav32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="favicon/fav16.png" sizes="16x16" />
-  <link rel="icon" type="image/png" href="favicon/fav48.png" sizes="48x48" />
-  <title>Costruzioni Bruzzese S.r.l. - Impresa Edile - Gozzano</title>
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="css/jquery.fancybox.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="css/animate.css" rel="stylesheet">
-  <link href="css/slick.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NQVSK7TF');</script>
-<!-- End Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NQVSK7TF');
+  </script>
 </head>
 
-<body class="" style="background-color: #F4F2E8; overflow-x:hidden;">
-<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <a href="https://api.whatsapp.com/send?phone=393484277541" onclick="ga('send', 'event', 'Click WhatsApp', 'Click WhatsApp');" title="WhatsApp" target="_blank" class="contatti"><img class="img-fluid wa" src="img/wa.png"></a>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+  <a class="whatsapp" href="https://api.whatsapp.com/send?phone=393484277541" target="_blank" rel="noopener" aria-label="Contatta Costruzioni Bruzzese su WhatsApp">
+    <img src="img/wa.png" alt="WhatsApp">
+  </a>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5V9FZZNK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img class="img-fluid logo-nav" src="img/logo.svg" alt="logo-nav"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html#chisiamo" title="Chi siamo">Chi siamo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-civile.html" title="Edilizia Civile">Edilizia Civile </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-industriale.html" title="Edilizia Industriale">Edilizia
-                            Industriale </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="villetta-curva.html" title="Vendite">Vendite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contatti" title="Contatti">Contatti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/costruzionibruzzese/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Costruzioni Bruzzese home">
+      <img src="img/logo.svg" alt="Costruzioni Bruzzese S.r.l.">
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteMenu">Menu</button>
+    <nav class="menu" id="siteMenu" aria-label="Menu principale">
+      <a href="#storia">Chi siamo</a>
+      <a href="edilizia-civile.html">Edilizia civile</a>
+      <a href="edilizia-industriale.html">Edilizia industriale</a>
+      <a href="villetta-curva.html">Vendite</a>
+      <a href="https://www.instagram.com/costruzionibruzzese/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#contatti">Contatti</a>
     </nav>
-    <section class="head">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="title-head">Costruzioni<br> Bruzzese<br>Edilizia civile<br> ed industriale - Gozzano (NO)</h1>
-                    <p class="txt-head">Una tradizione familiare di qualità dal 1986</p>
-                </div>
-            </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Impresa edile a Gozzano</span>
+        <h1>Costruire bene, da generazioni.</h1>
+        <p>Costruzioni Bruzzese S.r.l. opera in edilizia civile e industriale con un approccio concreto, familiare e orientato alla qualità del cantiere.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#contatti">Richiedi informazioni</a>
+          <a class="button light" href="#lavori">Guarda i lavori</a>
         </div>
-    </section>
-    <section style="background-color:#171A20">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-5 box-h2" id="chisiamo">
-                    <p class="mini-title">Costruzioni Bruzzese</p>
-                    <p class="title-h2">Nel cuore dell'edilizia italiana, <span class="rosso">nel 1986</span>, nasceva
-                        Costruzioni Bruzzese, fondata da Raimondo Bruzzese.<br>
-                        La passione per l'edilizia scorre nelle vene della famiglia da generazioni.<br>
-                        Un legame che affonda le radici nelle competenze e nei valori trasmessi sin dai tempi in cui
-                        <span class="rosso">Salvatore Bruzzese</span>, con dedizione instancabile, insegnava a suo
-                        figlio <span class="rosso">Raimondo</span>.<br>
-                        Raimondo, con la saggezza accumulata negli anni, ha trasmesso questa eredità a suo volta a suo
-                        figlio <span class="rosso">Denis</span>, che oggi porta avanti la tradizione.
-                    </p>
-                    <img class="img-fluid img-sede" src="img/sede.jpg" alt="Sede Bruzzese S.r.l">
-                </div>
-                <div class="col-md-7">
-                    <div class="row box-foto-sede">
-                        <div class="col-md-5">
-                            <p class="txt-foto-dx sp-bot"><strong class="rosso">Origini Familiari:</strong><br>
-                                Raimondo, con la sua vasta esperienza nel settore coltivata negli anni di lavoro
-                                affianco a suo padre, nel 1986 ha dato vita a Costruzioni Bruzzese. La sua dedizione e
-                                l’abilità nel settore hanno gettato le basi per un'azienda costruita su competenza e
-                                passione.<br>
-                                Oggi, Denis, seguendo le orme di suo padre e nonno, abilitandosi inoltre come Geometra,
-                                guida con determinazione la ditta.
-                            </p>
-                            <p class="txt-foto-dx"><strong class="rosso">Versatilità e Specializzazione:</strong><br>Da
-                                nuove costruzioni a ristrutturazioni, questa impresa si distingue per la sua
-                                versatilità, impegnati in una vasta gamma di progetti.
-                                La chiave del successo risiede nella capacità di adattarsi alle esigenze dei clienti,
-                                lavorando sia per privati che per il settore pubblico.
-                            </p>
-                        </div>
-                        <div class="col-md-7 back-sede2">
-                            <div class="h-img"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section style="background-color:#171A20">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4 box-h2-sx">
-                    <p class="title-h2"><strong class="rosso">Impegno per l'Eccellenza:</strong><br>Ciò che la
-                        differenzia è l'impegno costante per l'eccellenza, garantendo prontezza.
-                        Fin dai primi giorni, cerca le soluzioni migliori e più valide, abbracciando tecnologie
-                        all'avanguardia, utilizzando attrezzature e materiali di alta qualità. Questo impegno si
-                        riflette nei progetti che completa con successo nel corso degli anni, costruendo non solo
-                        edifici ma anche relazioni durature con i clienti.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <img class="img-fluid img-sede2" src="img/sede-3.jpg" alt="sede">
-                </div>
-                <div class="col-md-4 box-h2-dx">
-                    <p class="title-h2"><strong class="rosso">Guardando al Futuro:</strong><br>
-                        Oggi, con Raimondo e Denis al timone, Costruzioni Bruzzese guarda al futuro con entusiasmo.
-                        Continuando a essere guidata dalla passione per l'edilizia e dalla ricerca delle migliori
-                        soluzioni per soddisfare le esigenze dei clienti con l’aiuto dei suoi operai e collaboratori. La
-                        tradizione di qualità e dedizione rimane il fondamento su cui l’impresa costruisce il cammino
-                        verso nuovi successi.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4 box-h2 box-txt">
-                    <p class="mini-title blu">Costruzioni Bruzzese</p>
-                    <h2 class="title-h2-sez blu">Edilizia Civile</h2>
-                    <p class="txt">
-                        L'edilizia civile rappresenta il settore dedicato alla realizzazione di edifici destinati
-                        all'uso pubblico e privato a fini civili.<br><br>
-                        Più precisamente, quando si parla di "architettura civile," ci si riferisce all'insieme degli
-                        edifici progettati per svolgere attività legate alla vita quotidiana.</p>
-                    <a class="btn-blu" href="edilizia-civile.html" title="Edilizia Civile">Scopri di più</a>
-                </div>
-                <div class="col-md-8">
-
-                    <div class="box-vertical" class="h-vertical-slide">
-                        <div class="col-md-12 riga-dx owl-nopaddig">
-                            <div class="owl-carousel owl-theme owl-stage-outer">
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/1.jpg" title="Edilizia civile" data-fancybox="civile"><img src="img/gallery-civile/slider-civile/1.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/2.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/2.jpg" class="img-fluid center-block"></a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/3.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/3.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/4.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/4.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/5.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/5.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/6.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/6.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/7.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/7.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/11.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/11.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/12.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/12.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/13.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/13.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/14.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/14.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/15.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/15.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/16.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/16.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/17.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/17.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/18.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/18.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-civile/19.jpg" data-fancybox="civile" title="Edilizia civile"><img src="img/gallery-civile/slider-civile/19.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-    </section>
-    <section style="background-color:#171A20;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 box-h2-sez box-txt order-md-2">
-                    <p class="mini-title">Costruzioni Bruzzese</p>
-                    <h2 class="title-h2-sez ">Edilizia Industriale</h2>
-                    <p class="txt white">
-                        Nel contesto edilizio, il termine "industriale" abbraccia una vasta gamma di attività dedicate
-                        alla costruzione, manutenzione e modifica di edifici destinati al settore industriale e
-                        logistico.<br> Queste operazioni sono svolte in conformità con le regole specifiche del settore
-                        e rispettano scrupolosamente le destinazioni d'uso previste.<br> In altre parole, quando ci
-                        occupiamo di edilizia industriale, ci concentriamo sulla creazione e gestione di spazi
-                        architettonici progettati per sostenere le esigenze e le funzioni specifiche dell'industria e
-                        della logistica, rispettando rigorosamente le normative e le finalità stabilite per tali
-                        tipologie di costruzioni.</p>
-                    <a class="btn" href="edilizia-industriale.html" title="Edilizia Industriale">Scopri di più</a>
-
-                </div>
-                <div class="col-md-6 order-md-1">
-
-                    <div class="box-vertical2" class="h-vertical-slide2">
-                        <div class="col-md-12 riga-dx owl-nopaddig">
-                            <div class="owl-carousel owl-theme owl-stage-outer">
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/1.jpg" title="Edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/1.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/2.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/2.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/3.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/3.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/4.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/4.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/5.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/5.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/6.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/6.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/7.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/7.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/8.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/8.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/9.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/9.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item sp-card-offerte">
-                                    <div class="col-md-12 card-offerte">
-                                        <div class="thumbnail">
-                                            <div class="caption">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a href="img/gallery-edilizia/10.jpg" title="Edilizia edilizia" data-fancybox="edilizia"><img src="img/gallery-edilizia/slider-edilizia/10.jpg" class="img-fluid center-block"></a></div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-        </div>
+      </div>
+      <div class="hero-media" aria-label="Cantiere e realizzazioni Costruzioni Bruzzese"></div>
     </section>
 
-    <section style="background-color:#801C1C" id="contatti">
-        <div class="container">
-            <div class="row sp-foot">
-                <div class="col-md-12">
-                    <img class="img-fluid logo-foot" src="img/logo-foot.svg">
-                </div>
-                <div class="col-md-4">
-                    <p class="tit-foot">Contatti</p>
-                    <p class="txt-foot"><strong>Bruzzese Raimondo</strong></p>
-                    <p class="txt-foot"><a href="tel:+393355930037" class="txt-foot" title="Telefono"><i class="fas fa-phone fa-xs"></i> 335 5930037</a></p>
-                    <p class="txt-foot"><strong>Geom. Bruzzese Denis</strong></p>
-                    <p class="txt-foot"><a href="tel:+393484277541" class="txt-foot" title="Telefono"><i class="fas fa-phone fa-xs"></i> 348 4277541</a></p>
-                    <br>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@gmail.com" class="txt-foot" title="Mail"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@gmail.com</a></p>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@legalmail.it" class="txt-foot" title="Mail"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@legalmail.it</a></p>
-                    <p class="txt-foot"><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" class="txt-foot"><i class="fas fa-map-marker-alt fa-xs"></i> Via dei Martiri delle Foibe 7 -
-                            Gozzano</a></p>
-                </div>
-
-                <div class="col-md-4">
-                    <p class="tit-foot">Corsi e certificazioni</p>
-                    <p class="txt-foot">Macchine movimento terra</p>
-                    <p class="txt-foot">Conduzione di piattaforme mobili elevabili</p>
-                    <p class="txt-foot">Carrelli elevatori telescopici</p>
-                    <p class="txt-foot">Spazi confinanti</p>
-                    <p class="txt-foot">Gru a torre</p>
-                    <p class="txt-foot">Ponteggi</p>
-                </div>
-
-                <div class="col-md-4">
-                    <p class="tit-foot">Categorie lavori:</p>
-<p class="txt-foot">OG1: edifici civili e industriali</p>
-<p class="txt-foot">OG3: strade, autostrade, ponti, viadotti, ferrovie, metropolitane.</p>
-<p class="tit-foot">Servizi:</p>
-<p class="txt-foot">Pulizia delle strade e servizi invernali</p>
-<p class="txt-foot">Operazioni cimiteriali</p>
-                </div>
-
-                <div class="col-md-10 offset-md-1 sp-form">
-                    <p class="tit-foot">Scrivici</p>
-                    <form id="contactForm" 		  
-						  data-netlify="true"
-						  netlify
-					>
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-
-                                    <input type="email" class="form-control" name="formEmail" id="formEmail" aria-describedby="emailHelp" placeholder="Mail">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="tele" class="form-control" name="formTelefono" id="formTelefono" aria-describedby="emailHelp" placeholder="Telefono">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="nome" class="form-control" name="formNome" id="formNome" placeholder="Nome">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="cognome" class="form-control" name="formCognome" id="formCognome" placeholder="Cognome">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="formMessaggio" rows="3" placeholder="Scrivici"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <div class="d-none form-control success-message w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
-                                        <div class="text-block-2">La tua richiesta è stata inviata, risponderemo nel
-                                            minor tempo
-                                            possibile</div>
-                                    </div>
-                                    <div class="d-none form-control error-message w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
-                                        <div class="text-block-3">Qualcosa è andato storto, ricontrolla i dati che hai
-                                            inserito
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" value="accept" placeholder="Consenso" name="privacyAcceptContact" id="privacyAcceptContact" class="form-check-input" required>
-                                    <label for="privacyAcceptContact" class="white form-check-label">Dichiaro di aver
-                                        letto l'<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">informativa privacy</a> ed esprimo il mio consenso al
-                                        trattamento dei dati per le finalità indicate.</label>
-                                </div>
-                                <input type="submit" class="form-control btn" value="INVIA" id="sendBtn">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 brd-top">
-                        <br>
-                        <p class="txt-foot">Costruzioni Bruzzese S.r.l | Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a> | <a href='#' class='iubenda-cs-preferences-link'> Le tue preferenze relative alla privacy</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="stats-strip" aria-label="Informazioni principali">
+      <div class="stat-box"><strong>1986</strong><span>anno di fondazione</span></div>
+      <div class="stat-box"><strong>2</strong><span>generazioni operative</span></div>
+      <div class="stat-box"><strong>OG1</strong><span>edifici civili e industriali</span></div>
+      <div class="stat-box"><strong>OG3</strong><span>strade, ponti e viabilità</span></div>
     </section>
-    <script src="js/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/brands.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/solid.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/fontawesome.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/slick.js" async defer></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js" async defer></script>
-    <script src="js/form.js" async defer></script>
 
-    
+    <section class="section" id="storia">
+      <div class="about-layout">
+        <aside class="about-card">
+          <img src="img/sede.jpg" alt="Sede Costruzioni Bruzzese a Gozzano">
+          <p>Via dei Martiri delle Foibe 7, Gozzano (NO)</p>
+        </aside>
 
-    <script>
-        
-$('.owl-carousel').owlCarousel({
-  stagePadding: 80,
-  loop: true,
-  margin: 30,
-  autoplay: true,
-  autoplayTimeout: 4000,
-  nav: false,
-  dots:false,
-  responsive: {
-      0: {
-          items: 1.2,
-          stagePadding: 0
-      },
-      800: {
-          items: 1.1,
-          stagePadding: 12
-      },
-      1200: {
-          items: 1.1
-          
-      }
+        <div>
+          <span class="eyebrow" style="color:var(--wine)">La nostra storia</span>
+          <h2 class="section-title">Dalla famiglia al cantiere</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <h3>Le origini</h3>
+              <p class="text">La passione per l’edilizia nasce dall’esperienza trasmessa da Salvatore Bruzzese a suo figlio Raimondo, attraverso lavoro pratico, dedizione e conoscenza del mestiere.</p>
+            </article>
+            <article class="timeline-item">
+              <h3>1986</h3>
+              <p class="text">Raimondo Bruzzese fonda Costruzioni Bruzzese, costruendo negli anni una realtà orientata a serietà, qualità esecutiva e rapporto diretto con il cliente.</p>
+            </article>
+            <article class="timeline-item">
+              <h3>Oggi</h3>
+              <p class="text">Denis Bruzzese prosegue il percorso familiare, portando avanti la tradizione dell’impresa con competenze tecniche e attenzione alle nuove esigenze del settore.</p>
+            </article>
+            <article class="timeline-item">
+              <h3>Metodo</h3>
+              <p class="text">L’impresa interviene su nuove costruzioni, ristrutturazioni, manutenzioni e lavori per privati, aziende ed enti pubblici, scegliendo soluzioni adatte a ogni progetto.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services">
+      <span class="eyebrow">Aree di intervento</span>
+      <h2 class="section-title">Cosa facciamo</h2>
+      <div class="service-grid">
+        <article class="service-card" style="--image:url('img/gallery-civile/slider-civile/1.jpg')">
+          <div class="service-content">
+            <h3>Edilizia civile</h3>
+            <p class="text">Realizzazione e ristrutturazione di edifici destinati all’uso privato e pubblico, con attenzione a funzionalità, durata e qualità delle finiture.</p>
+            <a class="button light" href="edilizia-civile.html">Scopri di più</a>
+          </div>
+        </article>
+
+        <article class="service-card" style="--image:url('img/gallery-edilizia/slider-edilizia/1.jpg')">
+          <div class="service-content">
+            <h3>Edilizia industriale</h3>
+            <p class="text">Costruzione, manutenzione e modifica di spazi destinati ad attività industriali e logistiche, nel rispetto delle destinazioni d’uso.</p>
+            <a class="button light" href="edilizia-industriale.html">Scopri di più</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="lavori">
+    <aside class="gallery-aside">
+        <div>
+        <span class="eyebrow" style="color:var(--wine)">Realizzazioni</span>
+        <h2 class="section-title">Cantieri e dettagli</h2>
+        </div>
+
+        <p class="text">
+        Una selezione di immagini dai lavori di edilizia civile e industriale.
+        Clicca sulla foto centrale per aprire la galleria.
+        </p>
+    </aside>
+
+    <div class="coverflow-slider" id="workSlider" aria-label="Galleria lavori">
+        <button class="slider-btn prev" type="button" aria-label="Immagine precedente">‹</button>
+
+        <div class="slider-stage">
+        <!-- Edilizia civile -->
+        <a href="img/gallery-civile/slider-civile/1.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-civile/slider-civile/1.jpg" alt="Realizzazione di edilizia civile 1">
+        </a>
+
+        <a href="img/gallery-civile/slider-civile/2.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-civile/slider-civile/2.jpg" alt="Realizzazione di edilizia civile 2">
+        </a>
+
+        <a href="img/gallery-civile/slider-civile/3.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-civile/slider-civile/3.jpg" alt="Realizzazione di edilizia civile 3">
+        </a>
+
+        <a href="img/gallery-civile/slider-civile/4.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-civile/slider-civile/4.jpg" alt="Realizzazione di edilizia civile 4">
+        </a>
+
+        <a href="img/gallery-civile/slider-civile/5.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-civile/slider-civile/5.jpg" alt="Realizzazione di edilizia civile 5">
+        </a>
+
+        <!-- Edilizia industriale -->
+        <a href="img/gallery-edilizia/slider-edilizia/1.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-edilizia/slider-edilizia/1.jpg" alt="Realizzazione di edilizia industriale 1">
+        </a>
+
+        <a href="img/gallery-edilizia/slider-edilizia/2.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-edilizia/slider-edilizia/2.jpg" alt="Realizzazione di edilizia industriale 2">
+        </a>
+
+        <a href="img/gallery-edilizia/slider-edilizia/3.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-edilizia/slider-edilizia/3.jpg" alt="Realizzazione di edilizia industriale 3">
+        </a>
+
+        <a href="img/gallery-edilizia/slider-edilizia/4.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/gallery-edilizia/slider-edilizia/4.jpg" alt="Realizzazione di edilizia industriale 4">
+        </a>
+
+        <!-- Sede -->
+        <a href="img/sede-3.jpg" data-fancybox="lavori" class="slide">
+            <img src="img/sede-3.jpg" alt="Sede Costruzioni Bruzzese">
+        </a>
+        </div>
+
+        <button class="slider-btn next" type="button" aria-label="Immagine successiva">›</button>
+    </div>
+    </section>
+
+    <section class="section credentials">
+      <article class="info-panel">
+        <h3>Corsi e certificazioni</h3>
+        <p class="text">L’impresa dispone di competenze operative per lavorazioni e mezzi specifici di cantiere.</p>
+        <div class="pill-list">
+          <span class="pill">Macchine movimento terra</span>
+          <span class="pill">Piattaforme mobili elevabili</span>
+          <span class="pill">Carrelli elevatori telescopici</span>
+          <span class="pill">Spazi confinanti</span>
+          <span class="pill">Gru a torre</span>
+          <span class="pill">Ponteggi</span>
+        </div>
+      </article>
+
+      <article class="info-panel">
+        <h3>Categorie e servizi</h3>
+        <p class="text"><strong>OG1:</strong> edifici civili e industriali.</p>
+        <p class="text"><strong>OG3:</strong> strade, autostrade, ponti, viadotti, ferrovie, metropolitane.</p>
+        <div class="pill-list">
+          <span class="pill">Pulizia delle strade</span>
+          <span class="pill">Servizi invernali</span>
+          <span class="pill">Operazioni cimiteriali</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer" id="contatti">
+    <div class="footer-main">
+      <section>
+        <img class="footer-logo" src="img/logo-foot.svg" alt="Costruzioni Bruzzese S.r.l.">
+        <div class="contact-list">
+          <p><strong>Bruzzese Raimondo</strong><a href="tel:+393355930037">335 5930037</a></p>
+          <p><strong>Geom. Bruzzese Denis</strong><a href="tel:+393484277541">348 4277541</a></p>
+          <p><strong>Email</strong><a href="mailto:costruzionibruzzesesrl@gmail.com">costruzionibruzzesesrl@gmail.com</a><br><a href="mailto:costruzionibruzzesesrl@legalmail.it">costruzionibruzzesesrl@legalmail.it</a></p>
+          <p><strong>Sede</strong><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" rel="noopener">Via dei Martiri delle Foibe 7 - Gozzano</a></p>
+        </div>
+      </section>
+
+      <section>
+        <span class="eyebrow">Contatti</span>
+        <h2 class="section-title">Scrivici</h2>
+        <form name="contatti" data-netlify="true" netlify>
+          <div class="form-grid">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="cognome" placeholder="Cognome">
+            <input type="email" name="email" placeholder="Mail" required>
+            <input type="tel" name="telefono" placeholder="Telefono">
+            <textarea class="wide" name="messaggio" placeholder="Messaggio" required></textarea>
+            <label class="wide" style="display:flex; gap:.65rem; align-items:flex-start; font-size:.95rem; line-height:1.45;">
+              <input type="checkbox" name="privacy" value="accept" required style="width:auto; margin-top:.25rem;">
+              <span>Dichiaro di aver letto l’<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Privacy Policy">informativa privacy</a> ed esprimo il consenso al trattamento dei dati per le finalità indicate.</span>
+            </label>
+            <button class="btn-primary" type="submit">
+                Invia richiesta
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      Costruzioni Bruzzese S.r.l | Copyright © <span id="currentYear"></span> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Cookie Policy</a> | <a href="#" class="iubenda-cs-preferences-link">Le tue preferenze relative alla privacy</a>
+    </div>
+  </footer>
+
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#siteMenu');
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+<script>
+  const slider = document.querySelector('#workSlider');
+  const stage = slider.querySelector('.slider-stage');
+  const slides = [...slider.querySelectorAll('.slide')];
+  const prevBtn = slider.querySelector('.slider-btn.prev');
+  const nextBtn = slider.querySelector('.slider-btn.next');
+
+  let currentSlide = 0;
+  let startX = 0;
+  let movedX = 0;
+  let isDragging = false;
+  let hasDragged = false;
+
+  function renderCoverflow() {
+    slides.forEach((slide, index) => {
+      slide.className = 'slide';
+
+      const diff = (index - currentSlide + slides.length) % slides.length;
+
+      if (diff === 0) slide.classList.add('active');
+      else if (diff === 1) slide.classList.add('next');
+      else if (diff === 2) slide.classList.add('far-next');
+      else if (diff === slides.length - 1) slide.classList.add('prev');
+      else if (diff === slides.length - 2) slide.classList.add('far-prev');
+    });
   }
-})
 
-    </script>
+  function goNext() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    renderCoverflow();
+  }
+
+  function goPrev() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    renderCoverflow();
+  }
+
+  stage.addEventListener('pointerdown', function (e) {
+    isDragging = true;
+    hasDragged = false;
+    startX = e.clientX;
+    movedX = 0;
+
+    stage.classList.add('is-dragging');
+    stage.setPointerCapture(e.pointerId);
+  });
+
+  stage.addEventListener('pointermove', function (e) {
+    if (!isDragging) return;
+
+    movedX = e.clientX - startX;
+
+    if (Math.abs(movedX) > 8) {
+      hasDragged = true;
+    }
+  });
+
+  stage.addEventListener('pointerup', function (e) {
+    if (!isDragging) return;
+
+    if (movedX > 45) {
+      goPrev();
+    }
+
+    if (movedX < -45) {
+      goNext();
+    }
+
+    isDragging = false;
+    stage.classList.remove('is-dragging');
+  });
+
+  stage.addEventListener('pointercancel', function () {
+    isDragging = false;
+    stage.classList.remove('is-dragging');
+  });
+
+  stage.addEventListener('dragstart', function (e) {
+    e.preventDefault();
+  });
+
+  slides.forEach(slide => {
+    slide.addEventListener('click', function (e) {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  prevBtn.addEventListener('click', goPrev);
+  nextBtn.addEventListener('click', goNext);
+
+  renderCoverflow();
+</script>
 </body>
-
 </html>

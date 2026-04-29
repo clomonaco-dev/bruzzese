@@ -1,244 +1,573 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Costruzioni Bruzzese di Gozzano (NO) è specializzata in edilizia civile fornendo un servizio di costruzioni chiavi in mano, occupandosi in prima persona di progettazione, costruzione e manutenzione di edifici civili, piscine e opere in calcestruzzo." />
-    <link rel="apple-touch-icon" href="favicon/fav32.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="favicon/fav72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/fav114.png" />
-    <link rel="icon" type="image/png" href="favicon/fav32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon/fav16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="favicon/fav48.png" sizes="48x48" />
-    <title>Edilizia Civile - Costruzioni Bruzzese S.r.l - Gozzano</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/slick.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NQVSK7TF');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Costruzioni Bruzzese S.r.l. a Gozzano (NO) realizza costruzioni civili, ristrutturazioni, manutenzioni, demolizioni, scavi, piscine e opere in calcestruzzo.">
+
+  <title>Edilizia civile | Costruzioni Bruzzese S.r.l. - Gozzano</title>
+
+  <link rel="apple-touch-icon" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/fav32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/fav16.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #171a20;
+      --paper: #f4f2e8;
+      --wine: #801c1c;
+      --brick: #8e3832;
+      --stone: #dad4c2;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--dark);
+      font-family: "Urbanist", system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--brick); }
+
+    .floating-nav {
+      position: fixed;
+      z-index: 100;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 2rem));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .8rem 1rem;
+      border-radius: 999px;
+      background: rgba(23, 26, 32, .9);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 55px rgba(0,0,0,.22);
+    }
+    .brand img { width: min(210px, 50vw); }
+    .menu-button {
+      display: none;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 999px;
+      padding: .45rem .85rem;
+      font-weight: 700;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(.7rem, 2vw, 1.7rem); }
+    .nav-links a {
+      color: var(--white);
+      font-family: "Cormorant Garamond", serif;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: clamp(.94rem, 1vw, 1.08rem);
+    }
+    .nav-links a:last-child {
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 999px;
+      padding: .45rem .9rem;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 120;
+      width: clamp(56px, 6vw, 76px);
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.28));
+    }
+
+    .hero-civile {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      background: var(--dark);
+      color: var(--white);
+    }
+    .hero-panel {
+      padding: clamp(8rem, 13vw, 12rem) clamp(1.4rem, 5vw, 5rem) 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::before {
+      content: "CIVILE";
+      position: absolute;
+      left: -1vw;
+      bottom: -1vw;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(5rem, 15vw, 17rem);
+      line-height: .75;
+      color: rgba(255,255,255,.045);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      width: fit-content;
+      margin-bottom: 1.4rem;
+      color: var(--stone);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .9rem;
+    }
+    .eyebrow::before { content: ""; width: 48px; height: 1px; background: currentColor; }
+    h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(3.4rem, 8vw, 8.3rem);
+      line-height: .86;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero-text {
+      max-width: 640px;
+      margin-top: 1.7rem;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(1.05rem, 1.4vw, 1.32rem);
+      line-height: 1.55;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
+    .btn-pill {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: .75rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .88rem;
+    }
+    .btn-pill.fill { background: var(--wine); border-color: var(--wine); color: var(--white); }
+    .hero-image {
+      position: relative;
+      min-height: 100%;
+      background: url("img/civile1.jpg") center / cover no-repeat;
+      clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23,26,32,.04), rgba(23,26,32,.34));
+    }
+
+    .intro-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--wine);
+      color: var(--white);
+    }
+    .intro-item {
+      padding: clamp(1.4rem, 3vw, 2.5rem);
+      border-right: 1px solid rgba(255,255,255,.18);
+    }
+    .intro-item strong {
+      display: block;
+      font-size: clamp(1.6rem, 3vw, 3rem);
+      font-family: "Cormorant Garamond", serif;
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .intro-item span { text-transform: uppercase; letter-spacing: .08em; font-size: .92rem; }
+
+    .section { padding: clamp(4rem, 8vw, 8rem) clamp(1.2rem, 5vw, 5rem); }
+    .section-heading {
+      margin: 0 0 2rem;
+      font-size: clamp(2.7rem, 6vw, 6.8rem);
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .copy { font-size: clamp(1rem, 1.15vw, 1.17rem); line-height: 1.65; }
+
+    .overview {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .sticky-note {
+      position: sticky;
+      top: 7rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: 1.5rem;
+      background: var(--white);
+      box-shadow: 0 20px 60px rgba(23,26,32,.1);
+    }
+    .sticky-note img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+    .sticky-note h2 { margin: 0 0 .8rem; font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1; }
+    .feature-list { display: grid; gap: 1rem; }
+    .feature {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 1.2rem;
+      padding: 1.3rem;
+      border-radius: 1.2rem;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(23,26,32,.08);
+    }
+    .number {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--wine);
+      color: var(--white);
+      font-weight: 900;
+    }
+    .feature h3 { margin: 0 0 .35rem; color: var(--wine); font-size: 1.55rem; }
+    .feature p { margin: 0; }
+
+    .services-block {
+      background: var(--dark);
+      color: var(--white);
+    }
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .service-card {
+      min-height: 320px;
+      border-radius: 1.4rem;
+      padding: 1.4rem;
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.035));
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card h3 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: .95;
+    }
+    .service-card p { color: rgba(255,255,255,.78); }
+    .service-card .tag {
+      align-self: flex-start;
+      color: var(--stone);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      padding: .4rem .7rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .split-photo {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      min-height: 82vh;
+      background: var(--white);
+    }
+    .photo-side { background: url("img/civile2.jpg") center / cover no-repeat; }
+    .process-side {
+      padding: clamp(3rem, 6vw, 6rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .steps { counter-reset: step; display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .step {
+      counter-increment: step;
+      position: relative;
+      padding: 1rem 1rem 1rem 4rem;
+      border-bottom: 1px solid rgba(23,26,32,.14);
+    }
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      color: var(--wine);
+      font-weight: 900;
+    }
+    .step strong { display: block; margin-bottom: .25rem; }
+
+    .footer {
+      background: var(--wine);
+      color: var(--white);
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 5vw, 5rem);
+    }
+    .footer-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: clamp(2rem, 6vw, 6rem);
+    }
+    .footer-logo { width: min(520px, 90vw); margin-bottom: 2rem; }
+    .contact-group { display: grid; gap: 1rem; }
+    .contact-group strong { display: block; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .wide { grid-column: 1 / -1; }
+    input, textarea {
+      width: 100%;
+      border: 1.5px solid rgba(255,255,255,.75);
+      color: var(--white) !important;
+      background: transparent;
+      border-radius: .85rem;
+      padding: .85rem 1rem;
+      outline: none;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    ::placeholder { color: rgba(255,255,255,.86); }
+    .legal {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.5);
+      color: rgba(255,255,255,.86);
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      .floating-nav { align-items: flex-start; border-radius: 1.2rem; }
+      .menu-button { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 4.7rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background: var(--dark);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links.open { display: flex; }
+      .hero-civile, .overview, .split-photo, .footer-layout { grid-template-columns: 1fr; }
+      .hero-image { min-height: 42vh; clip-path: none; order: -1; }
+      .hero-panel { padding-top: 3rem; }
+      .intro-strip, .service-cards { grid-template-columns: 1fr; }
+      .sticky-note { position: static; }
+      .photo-side { min-height: 45vh; }
+    }
+
+    @media (max-width: 620px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .feature { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NQVSK7TF');
+  </script>
 </head>
 
-<body class="" style="background-color: #F4F2E8; overflow-x:hidden;">
-<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <a href="https://api.whatsapp.com/send?phone=393484277541" onclick="ga('send', 'event', 'Click WhatsApp', 'Click WhatsApp');" title="WhatsApp" target="_blank" class="contatti"><img class="img-fluid wa" src="img/wa.png"></a>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img class="img-fluid logo-nav" src="img/logo.svg" alt="logo-nav"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html#chisiamo" title="Chi siamo">Chi siamo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-civile.html" title="Edilizia Civile">Edilizia Civile </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edilizia-industriale.html" title="Edilizia Industriale">Edilizia Industriale </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="villetta-curva.html" title="Vendite">Vendite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contatti" title="Contatti">Contatti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/costruzionibruzzese/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <a class="whatsapp" href="https://api.whatsapp.com/send?phone=393484277541" target="_blank" rel="noopener" aria-label="Scrivi su WhatsApp">
+    <img src="img/wa.png" alt="WhatsApp">
+  </a>
+
+  <header class="floating-nav">
+    <a class="brand" href="index.html" aria-label="Costruzioni Bruzzese home">
+      <img src="img/logo.svg" alt="Costruzioni Bruzzese S.r.l.">
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="navigationLinks">Menu</button>
+    <nav class="nav-links" id="navigationLinks" aria-label="Navigazione principale">
+      <a href="index.html#storia">Chi siamo</a>
+      <a href="edilizia-civile.html">Edilizia civile</a>
+      <a href="edilizia-industriale.html">Edilizia industriale</a>
+      <a href="villetta-curva.html">Vendite</a>
+      <a href="https://www.instagram.com/costruzionibruzzese/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#contatti">Contatti</a>
     </nav>
+  </header>
 
-    <section style="background-color:#171A20">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-1 col-2">
-                    <div class="text-scorrevole">
-                        <div class="stage_animation">
-                            <p class="txt-vert">EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - EDILIZIA CIVILE - </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-10 box-pag">
-                    <h1 class="h1-pag text-center">EDILIZIA CIVILE</h1>
-                    <p class="txt-pag text-center">Per costruzioni Bruzzese di Gozzano, l'edilizia civile rappresenta il cuore dell'attività di costruzione.
-                    Siamo dedicati all'implementazione di strutture che contribuiscono in modo significativo al vivere quotidiano e al benessere collettivo.<br>
-                        Questo ampio settore abbraccia la creazione di un diversificato panorama architettonico, che va dalle residenze private ai complessi condominiali, dagli edifici residenziali multifunzionali alle istituzioni educative, come scuole e ospedali, e altri spazi destinati all'utilizzo generale della popolazione.</p>
-                </div>
-                <div class="col-md-5 col-12 back-civile">
-                </div>
-            </div>
+  <main>
+    <section class="hero-civile">
+      <div class="hero-panel">
+        <span class="eyebrow">Costruzioni Bruzzese</span>
+        <h1>Edilizia civile</h1>
+        <p class="hero-text">Realizziamo e manuteniamo spazi destinati alla vita quotidiana: abitazioni, complessi residenziali, opere in calcestruzzo, scavi e interventi collegati al costruire civile.</p>
+        <div class="hero-buttons">
+          <a class="btn-pill fill" href="#servizi">Scopri i servizi</a>
+          <a class="btn-pill" href="#contatti">Parla con noi</a>
         </div>
+      </div>
+      <div class="hero-image" role="img" aria-label="Edilizia civile Costruzioni Bruzzese"></div>
     </section>
 
-    <section style="background-color:#fff">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-5 back-civile2">
-                </div>
-                <div class="col-md-6 box-pag2">
-                    <h2 class="blu txt-pag titoli-lista-servizi"><strong>Costruzione chiavi in mano</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        Partiamo dalla progettazione e arriviamo alla consegna. Il nostro impegno nella costruzione si traduce in edifici solidi e conformi alle normative più recenti. <br>
-                    </p>
-                    <h2 class="blu txt-pag titoli-lista-servizi"><strong>Manutenzione</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        La manutenzione è la chiave per garantire la longevità degli edifici. Interveniamo con precisione, preservando il valore immobiliare e garantendo sicurezza e funzionalità.<br>
-                    </p>
-                    <h2 class=" blu txt-pag titoli-lista-servizi"><strong>Demolizione</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        Quando è il momento di fare spazio a nuove idee, ci prendiamo cura della demolizione con competenza e rispetto per l'ambiente. <br>
-                    </p>
-                    <h2 class=" blu txt-pag titoli-lista-servizi"><strong>Opere in Calcestruzzo</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        Il calcestruzzo è il nostro alleato in molteplici contesti, dalle fondamenta alle strutture portanti. Garantiamo resistenza e durabilità in opere come ponti, muri di sostegno e pavimentazioni.<br>
-                    </p>
-                    <h2 class=" blu txt-pag titoli-lista-servizi"><strong>Opere Cimiteriali</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        La nostra progettazione cimiteriale è improntata al rispetto e alla sensibilità. Creiamo spazi che onorano la memoria con serenità e sobrietà.<br>
-                    </p>
-                    <h2 class=" blu txt-pag titoli-lista-servizi"><strong>Scavi</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        Gli scavi sono la nostra prima mossa verso la realizzazione di progetti edilizi. Con precisione e sicurezza, prepariamo il terreno per il futuro.<br>
-                    </p>
-                    <h2 class=" blu txt-pag titoli-lista-servizi"><strong>Piscine</strong>:</h2>
-                    <p class="txt-pag blu pt-0 mb-0">
-                        La nostra competenza si estende alla creazione di spazi ricreativi come piscine. Dalla progettazione alla manutenzione, garantiamo esperienze sicure e rilassanti.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <section class="intro-strip" aria-label="Sintesi servizi edilizia civile">
+      <div class="intro-item"><strong>01</strong><span>Costruzioni chiavi in mano</span></div>
+      <div class="intro-item"><strong>02</strong><span>Manutenzioni e demolizioni</span></div>
+      <div class="intro-item"><strong>03</strong><span>Scavi, piscine e calcestruzzo</span></div>
     </section>
 
-    <section style=" background-color:#801C1C" id="contatti">
-        <div class="container">
-            <div class="row sp-foot">
-                <div class="col-md-12">
-                    <img class="img-fluid logo-foot" src="img/logo-foot.svg" alt="logo-footer">
-                </div>
-                <div class="col-md-4">
-                    <p class="tit-foot">Contatti</p>
-                    <p class="txt-foot"><strong>Bruzzese Raimondo</strong></p>
-                    <p class="txt-foot"><a href="tel:+393355930037" class="txt-foot" title="Telefono"><i class="fas fa-phone fa-xs"></i> 335 5930037</a></p>
-                    <p class="txt-foot"><strong>Geom. Bruzzese Denis</strong></p>
-                    <p class="txt-foot"><a href="tel:+393484277541" class="txt-foot" title="Telefono"><i class="fas fa-phone fa-xs"></i> 348 4277541</a></p>
-                    <br>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@gmail.com" title="Mail" class="txt-foot"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@gmail.com</a></p>
-                    <p class="txt-foot"><a href="mailto:costruzionibruzzesesrl@legalmail.it" class="txt-foot" title="Mail"><i class="fas fa-envelope fa-xs"></i> costruzionibruzzesesrl@legalmail.it</a></p>
-                    <p class="txt-foot"><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" class="txt-foot"><i class="fas fa-map-marker-alt fa-xs"></i> Via dei Martiri delle Foibe 7 - Gozzano</a></p>
-                </div>
+    <section class="section">
+      <div class="overview">
+        <aside class="sticky-note">
+          <img src="img/civile2.jpg" alt="Dettaglio intervento di edilizia civile">
+          <h2>Costruire spazi utili, solidi e duraturi.</h2>
+          <p class="copy">L’edilizia civile è il cuore dell’attività dell’impresa: un ambito ampio che comprende immobili residenziali, strutture a uso collettivo e opere collegate alla qualità degli spazi abitati.</p>
+        </aside>
 
-                <div class="col-md-4">
-                    <p class="tit-foot">Corsi e certificazioni</p>
-                    <p class="txt-foot">Macchine movimento terra</p>
-                    <p class="txt-foot">Conduzione di piattaforme mobili elevabili</p>
-                    <p class="txt-foot">Carrelli elevatori telescopici</p>
-                    <p class="txt-foot">Spazi confinanti</p>
-                    <p class="txt-foot">Gru a torre</p>
-                    <p class="txt-foot">Ponteggi</p>
-                </div>
-
-                <div class="col-md-4">
-                    <p class="tit-foot">Categorie lavori:</p>
-<p class="txt-foot">OG1: edifici civili e industriali</p>
-<p class="txt-foot">OG3: strade, autostrade, ponti, viadotti, ferrovie, metropolitane.</p>
-<p class="tit-foot">Servizi:</p>
-<p class="txt-foot">Pulizia delle strade e servizi invernali</p>
-<p class="txt-foot">Operazioni cimiteriali</p>
-                </div>
-
-                <div class="col-md-10 offset-md-1 sp-form">
-                    <p class="tit-foot">Scrivici</p>
-                    <form id="contactForm" 		  
-						  data-netlify="true"
-						  netlify
-					>
-                        <div class="row">
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-
-                                    <input type="email" class="form-control" name="formEmail" id="formEmail" aria-describedby="emailHelp" placeholder="Mail">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="tele" class="form-control" name="formTelefono" id="formTelefono" aria-describedby="emailHelp" placeholder="Telefono">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="nome" class="form-control" name="formNome" id="formNome" placeholder="Nome">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-6">
-                                <div class="mb-3">
-                                    <input type="cognome" class="form-control" name="formCognome" id="formCognome" placeholder="Cognome">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="formMessaggio" rows="3" placeholder="Scrivici"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <div class="d-none form-control success-message w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
-                                        <div class="text-block-2">La tua richiesta è stata inviata, risponderemo nel minor tempo
-                                            possibile</div>
-                                    </div>
-                                    <div class="d-none form-control error-message w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
-                                        <div class="text-block-3">Qualcosa è andato storto, ricontrolla i dati che hai inserito
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" value="accept" placeholder="Consenso" name="privacyAcceptContact" id="privacyAcceptContact" class="form-check-input" required>
-                                    <label for="privacyAcceptContact" class="white form-check-label">Dichiaro di aver letto l'<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">informativa privacy</a> ed esprimo il mio consenso al trattamento dei dati per le finalità indicate.</label>
-                                </div>
-                                <input type="submit" class="form-control btn" value="INVIA" id="sendBtn">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 brd-top">
-                        <br>
-                        <p class="txt-foot">Costruzioni Bruzzese S.r.l | Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a> | <a href='#' class='iubenda-cs-preferences-link'> Le tue preferenze relative alla privacy</a></p>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <span class="eyebrow" style="color:var(--wine)">Approccio</span>
+          <h2 class="section-heading">Dal terreno alla consegna</h2>
+          <div class="feature-list">
+            <article class="feature">
+              <div class="number">1</div>
+              <div>
+                <h3>Analisi e progettazione</h3>
+                <p class="copy">Valutiamo il contesto, le esigenze del cliente e le soluzioni tecniche più adatte prima di avviare l’intervento.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <div class="number">2</div>
+              <div>
+                <h3>Realizzazione</h3>
+                <p class="copy">Gestiamo le lavorazioni con attenzione a sicurezza, solidità, conformità normativa e qualità esecutiva.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <div class="number">3</div>
+              <div>
+                <h3>Manutenzione</h3>
+                <p class="copy">Interveniamo per preservare funzionalità, valore e durata degli edifici nel tempo.</p>
+              </div>
+            </article>
+          </div>
         </div>
+      </div>
     </section>
-    <script src="js/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/brands.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/solid.min.js"></script>
-    <script src="https://cdn.rozro.com/font-awesome/fontawesome.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/slick.js" async defer></script>
-    <script src="js/main.js" async defer></script>
-    <script src="js/form.js" async defer></script>
 
-    
+    <section class="section services-block" id="servizi">
+      <span class="eyebrow">Servizi</span>
+      <h2 class="section-heading">Interventi civili</h2>
+      <div class="service-cards">
+        <article class="service-card">
+          <span class="tag">Completo</span>
+          <h3>Costruzione chiavi in mano</h3>
+          <p class="copy">Dalla progettazione alla consegna, con edifici solidi e conformi alle normative più recenti.</p>
+        </article>
+        <article class="service-card">
+          <span class="tag">Conservazione</span>
+          <h3>Manutenzione</h3>
+          <p class="copy">Interventi mirati per mantenere sicurezza, funzionalità e valore immobiliare.</p>
+        </article>
+        <article class="service-card">
+          <span class="tag">Preparazione</span>
+          <h3>Demolizioni e scavi</h3>
+          <p class="copy">Attività eseguite con precisione per liberare, preparare e organizzare nuove aree di lavoro.</p>
+        </article>
+        <article class="service-card">
+          <span class="tag">Strutture</span>
+          <h3>Opere in calcestruzzo</h3>
+          <p class="copy">Fondazioni, strutture portanti, muri di sostegno, pavimentazioni e opere resistenti nel tempo.</p>
+        </article>
+        <article class="service-card">
+          <span class="tag">Sobrietà</span>
+          <h3>Opere cimiteriali</h3>
+          <p class="copy">Realizzazione di spazi dedicati alla memoria, con attenzione, rispetto e cura dei dettagli.</p>
+        </article>
+        <article class="service-card">
+          <span class="tag">Outdoor</span>
+          <h3>Piscine</h3>
+          <p class="copy">Progettazione, realizzazione e manutenzione di spazi ricreativi sicuri e funzionali.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="split-photo">
+      <div class="photo-side" role="img" aria-label="Cantiere edilizia civile"></div>
+      <div class="process-side">
+        <span class="eyebrow" style="color:var(--wine)">Metodo di lavoro</span>
+        <h2 class="section-heading">Un processo chiaro</h2>
+        <p class="copy">Ogni intervento viene organizzato per ridurre incertezze, coordinare le fasi operative e mantenere il controllo su qualità, tempi e sicurezza.</p>
+        <div class="steps">
+          <div class="step"><strong>Sopralluogo e valutazione</strong><span>Analisi dello stato dei luoghi e delle necessità del cliente.</span></div>
+          <div class="step"><strong>Pianificazione del cantiere</strong><span>Definizione di lavorazioni, mezzi, materiali e sequenza degli interventi.</span></div>
+          <div class="step"><strong>Esecuzione e controllo</strong><span>Realizzazione delle opere con verifiche progressive durante le fasi di lavoro.</span></div>
+          <div class="step"><strong>Consegna e assistenza</strong><span>Chiusura dell’intervento e supporto per eventuali esigenze successive.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contatti">
+    <div class="footer-layout">
+      <section>
+        <img class="footer-logo" src="img/logo-foot.svg" alt="Costruzioni Bruzzese S.r.l.">
+        <div class="contact-group">
+          <p><strong>Bruzzese Raimondo</strong><a href="tel:+393355930037">335 5930037</a></p>
+          <p><strong>Geom. Bruzzese Denis</strong><a href="tel:+393484277541">348 4277541</a></p>
+          <p><strong>Email</strong><a href="mailto:costruzionibruzzesesrl@gmail.com">costruzionibruzzesesrl@gmail.com</a><br><a href="mailto:costruzionibruzzesesrl@legalmail.it">costruzionibruzzesesrl@legalmail.it</a></p>
+          <p><strong>Sede</strong><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" rel="noopener">Via dei Martiri delle Foibe 7 - Gozzano</a></p>
+        </div>
+      </section>
+
+      <section>
+        <span class="eyebrow">Contatti</span>
+        <h2 class="section-heading">Scrivici</h2>
+        <form name="contatti" data-netlify="true" netlify>
+          <div class="form-grid">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="cognome" placeholder="Cognome">
+            <input type="email" name="email" placeholder="Mail" required>
+            <input type="tel" name="telefono" placeholder="Telefono">
+            <textarea class="wide" name="messaggio" placeholder="Messaggio" required></textarea>
+            <label class="wide" style="display:flex; gap:.65rem; align-items:flex-start; font-size:.95rem; line-height:1.45;">
+              <input type="checkbox" name="privacy" value="accept" required style="width:auto; margin-top:.25rem;">
+              <span>Dichiaro di aver letto l’<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Privacy Policy">informativa privacy</a> ed esprimo il consenso al trattamento dei dati per le finalità indicate.</span>
+            </label>
+            <button class="btn-primary" type="submit">
+              Invia richiesta
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="legal">
+      Costruzioni Bruzzese S.r.l | Copyright © <span id="currentYear"></span> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Cookie Policy</a> | <a href="#" class="iubenda-cs-preferences-link">Le tue preferenze relative alla privacy</a>
+    </div>
+  </footer>
+
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('#navigationLinks');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  </script>
 </body>
-
 </html>
