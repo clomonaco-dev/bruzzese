@@ -18,36 +18,18 @@
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/vendite.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
-  <script>
-    var _iub = _iub || [];
-    _iub.csConfiguration = { siteId: 3549719, cookiePolicyId: 53462338, lang: 'it', storage: { useSiteId: true }, banner: { position: 'bottom', acceptButtonDisplay: true, customizeButtonDisplay: true, rejectButtonDisplay: true, closeButtonDisplay: false } };
-  </script>
+  <script src="js/iubenda-config.js"></script>
   <script src="https://cdn.iubenda.com/cs/iubenda_cs.js" async></script>
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NQVSK7TF');
-  </script>
+  <script src="js/gtm.js"></script>
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <a class="wa-fixed" href="https://api.whatsapp.com/send?phone=393484277541" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/wa.png" alt="WhatsApp"></a>
 
-  <header class="site-header">
-    <a class="logo" href="index.html" aria-label="Costruzioni Bruzzese home">
-      <img src="img/logo.svg" alt="Costruzioni Bruzzese S.r.l.">
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainMenu">Menu</button>
-    <nav class="nav-menu" id="mainMenu" aria-label="Navigazione principale">
-      <a href="index.html#storia">Chi siamo</a>
-      <a href="civile.html">Edilizia civile</a>
-      <a href="industriale.html">Edilizia industriale</a>
-      <a href="vendite.html">Vendite</a>
-      <a href="https://www.instagram.com/costruzionibruzzese/" target="_blank" rel="noopener">Instagram</a>
-      <a href="#contatti">Contatti</a>
-    </nav>
-  </header>
+  <div id="header-placeholder"></div>
 
   <div class="sold-notice" id="soldModal" role="dialog" aria-modal="true">
     <div class="sold-notice-card">
@@ -170,45 +152,14 @@
     </section>
   </main>
 
-  <footer class="footer" id="contatti">
-    <div class="footer-grid">
-      <section>
-        <img class="footer-logo" src="img/logo-foot.svg" alt="Costruzioni Bruzzese S.r.l.">
-        <div class="contacts">
-          <p><strong>Bruzzese Raimondo</strong><a href="tel:+393355930037">335 5930037</a></p>
-          <p><strong>Geom. Bruzzese Denis</strong><a href="tel:+393484277541">348 4277541</a></p>
-          <p><strong>Email</strong><a href="mailto:costruzionibruzzesesrl@gmail.com">costruzionibruzzesesrl@gmail.com</a><br><a href="mailto:costruzionibruzzesesrl@legalmail.it">costruzionibruzzesesrl@legalmail.it</a></p>
-          <p><strong>Sede</strong><a href="https://maps.app.goo.gl/aqRvVbtZg5574CuH9" target="_blank" rel="noopener">Via dei Martiri delle Foibe 7 - Gozzano</a></p>
-        </div>
-      </section>
-      <section id="form">
-        <span class="eyebrow">Contatti</span>
-        <h2 class="title">Scrivici</h2>
-        <form name="contatti" data-netlify="true" netlify>
-          <div class="form-grid">
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="text" name="cognome" placeholder="Cognome">
-            <input type="email" name="email" placeholder="Mail" required>
-            <input type="tel" name="telefono" placeholder="Telefono">
-            <textarea class="wide" name="messaggio" placeholder="Messaggio" required></textarea>
-            <label class="wide" style="display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;line-height:1.45">
-              <input type="checkbox" name="privacy" value="accept" required style="width:auto;margin-top:.25rem">
-              <span>Dichiaro di aver letto l’<a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">informativa privacy</a> ed esprimo il consenso al trattamento dei dati per le finalità indicate.</span>
-            </label>
-            <button class="btn-primary" type="submit">
-              Invia richiesta
-            </button>
-          </div>
-        </form>
-      </section>
-    </div>
-    <div class="legal">Costruzioni Bruzzese S.r.l | Copyright © <span id="year"></span> | P.IVA: 02087060030 | REA: NO-214636 | Sede Legale: Via Martiri Delle Foibe 7 - 28024 - Gozzano (NO) | Capitale Sociale: 10.000,00 € | <a href="https://www.iubenda.com/privacy-policy/53462338" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/53462338/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed">Cookie Policy</a> | <a href="#" class="iubenda-cs-preferences-link">Le tue preferenze relative alla privacy</a></div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/vendite.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
 </body>
 </html>
