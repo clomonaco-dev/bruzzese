@@ -1,14 +1,14 @@
-var _iub = _iub || [];
-_iub.csConfiguration = {
-  siteId: 3549719,
-  cookiePolicyId: 53462338,
-  lang: "it",
-  storage: { useSiteId: true },
+window._iub = window._iub || [];
+
+window._iub.csConfiguration = {
+  askConsentAtCookiePolicyUpdate: true,
+  floatingPreferencesButtonDisplay: "bottom-left",
+  perPurposeConsent: true,
+
   banner: {
     position: "bottom",
     acceptButtonDisplay: true,
-    customizeButtonDisplay: true,
     rejectButtonDisplay: true,
-    closeButtonDisplay: false
+    customizeButtonDisplay: true
   }
 };
