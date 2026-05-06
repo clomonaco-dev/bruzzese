@@ -1,0 +1,8 @@
+v2.1.0
+- aggiunto video su hero
+- tolte sezioni rosse nelle prime 3 pagine 
+- aggiustato bug galleria 
+- scorrimento img vendite 2 per volta 
+- tolto parti ridondanti 
+- impostato edilizia e civile con stesso layout 
+- aggiunto bottone che indirizza google maps in pagina principale

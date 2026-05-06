@@ -17,17 +17,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // owl carousel
   if ($('.property-carousel').length) {
     $('.property-carousel').owlCarousel({
-      stagePadding: 30,
       loop: true,
-      margin: 16,
+      margin: 18,
       autoplay: true,
       autoplayTimeout: 4200,
       nav: false,
       dots: false,
+
+      slideBy: 2,
+
       responsive: {
-        0: { items: 1.05, stagePadding: 0 },
-        800: { items: 1.55, stagePadding: 12 },
-        1200: { items: 1.75, stagePadding: 30 }
+        0: {
+          items: 1,
+          slideBy: 1,
+          stagePadding: 0
+        },
+        800: {
+          items: 2,
+          slideBy: 2,
+          stagePadding: 0
+        },
+        1200: {
+          items: 2,
+          slideBy: 2,
+          stagePadding: 0
+        }
       }
     });
   }
