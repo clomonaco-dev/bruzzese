@@ -22,6 +22,7 @@
   <link href="css/jquery.fancybox.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/hero.css" rel="stylesheet">
 
   <!-- Font Awesome CDN: servizio esterno, valuta versione locale -->
   <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
@@ -34,12 +35,12 @@
   <script defer src="https://analytics.clmautomation.it/script.js"
     data-website-id="62a6ae4e-a37e-405d-af54-bb50b91dd9b1"></script>
 
+
+
 </head>
 <!-- TODO mettere gif, sfondo nero, spostare la scritta 1986 a destra, togliere la bend rossa sotto -->
 
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVSK7TF" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="floating-social">
     <a class="instagram" href="https://www.instagram.com/costruzionibruzzese/" target="_blank" rel="noopener"
@@ -53,41 +54,53 @@
     </a>
   </div>
 
-  <div id="header-placeholder"></div>
+  <header class="topbar">
+
+    <a class="brand" href="index.html">
+      <img src="img/logo.svg" alt="Costruzioni Bruzzese S.r.l.">
+    </a>
+
+    <button class="menu-toggle" type="button">
+      Menu
+    </button>
+
+    <nav class="menu">
+      <a href="index.html#storia">Chi siamo</a>
+      <a href="civile.html">Edilizia civile</a>
+      <a href="industriale.html">Edilizia industriale</a>
+      <a href="vendite.html">Vendite</a>
+      <a href="index.html#contatti">Contatti</a>
+    </nav>
+
+  </header>
 
   <main>
     <section class="hero">
+      <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto">
+        <source src="img/hero.mp4" type="video/mp4">
+      </video>
 
-      <div class="hero-media">
-        <video class="hero-video" autoplay muted playsinline preload="auto">
-
-          <source src="img/hero.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="hero-copy">
-
-        <span class="hero-year">DAL 1986</span>
-
-        <span class="eyebrow">Impresa edile a Gozzano</span>
+      <div class="hero-content">
+        <span class="hero-eyebrow">Impresa edile a Gozzano</span>
 
         <h1>
-          Costruire bene,<br>
-          da generazioni.
+          Costruire<br>
+          bene,<br>
+          da<br>
+          generazioni.
         </h1>
 
         <p>
           Costruzioni Bruzzese S.r.l. opera in edilizia civile e industriale
-          con un approccio concreto, familiare e orientato alla qualità del cantiere.
+          con un approccio concreto, familiare e orientato alla qualità
+          del cantiere.
         </p>
 
         <div class="hero-actions">
           <a class="button primary" href="#contatti">Richiedi informazioni</a>
           <a class="button light" href="#lavori">Guarda i lavori</a>
         </div>
-
       </div>
-
     </section>
 
     <section class="section" id="storia">
@@ -253,8 +266,15 @@
   <script src="js/bootstrap.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/dashboard.js"></script>
-  <script src="js/header.js"></script>
+
   <script src="js/footer.js"></script>
+  <script>
+    const content = document.querySelector('.hero-content');
+
+    setTimeout(() => {
+      content.classList.add('show');
+    }, 4500);
+  </script>
 </body>
 
 </html>

@@ -1,26 +1,27 @@
-document.addEventListener("DOMContentLoaded", async function () {
+(async function () {
   const placeholder = document.getElementById("header-placeholder");
-
   if (!placeholder) return;
 
   try {
-    const response = await fetch("header.html");
-    if (!response.ok) throw new Error(`Errore HTTP: ${response.status}`);
+    const response = await fetch("header.html", {
+      cache: "no-cache"
+    });
 
-    const html = await response.text();
-    placeholder.innerHTML = html;
+    if (!response.ok) {
+      throw new Error(`Errore HTTP: ${response.status}`);
+    }
 
-    // MENU MOBILE: va inizializzato DOPO aver inserito l'header
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".menu");
+    placeholder.innerHTML = await response.text();
+
+    const toggle = placeholder.querySelector(".menu-toggle");
+    const menu = placeholder.querySelector(".menu");
 
     if (toggle && menu) {
       toggle.addEventListener("click", function () {
         menu.classList.toggle("open");
       });
     }
-
   } catch (error) {
     console.error("Errore caricamento header:", error);
   }
-});
+})();
