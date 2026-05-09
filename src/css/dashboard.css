@@ -1,6 +1,9 @@
 .eyebrow {
   color: #d8c8aa;
 }
+body {
+  font-family: "Inter", sans-serif;
+}
 
 .hero p {
   color: rgba(255, 255, 255, 0.72);

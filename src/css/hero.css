@@ -4,11 +4,15 @@
   height: 100vh;
   min-height: 760px;
   overflow: hidden;
-  background: #000;
+  background: #4a2c1d;
   color: #fff;
 }
 
 /* Video/mattoni a sinistra */
+
+body {
+  font-family: "Inter", sans-serif;
+}
 
 .hero-video {
   position: absolute;
