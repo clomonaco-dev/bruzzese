@@ -4,7 +4,7 @@
   height: 100vh;
   min-height: 760px;
   overflow: hidden;
-  background: #4a2c1d;
+  background: #f4f2e8;
   color: #fff;
 }
 
@@ -31,8 +31,8 @@ body {
 
 .hero-content {
   position: absolute;
-  right: 4vw;
-  top: 32%;
+  right: 0vw;
+  top: 60%;
 
   width: min(680px, 42vw);
 

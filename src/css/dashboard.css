@@ -13,6 +13,17 @@ body {
   color: rgba(216, 200, 170, 0.055);
 }
 
+.button.blue {
+  background: #081449;
+  color: white;
+  border: 1px solid #2d52b8;
+}
+
+.button.blue:hover {
+  background: #24378f;
+  border-color: #2d52b8;
+}
+
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
