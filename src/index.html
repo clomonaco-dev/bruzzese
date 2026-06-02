@@ -76,18 +76,23 @@
 
   <main>
     <section class="hero">
-      <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto">
-        <source src="img/hero.mp4" type="video/mp4" media="(max-width: 768px)">
+
+      <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="metadata">
         <source src="img/hero-full.mp4" type="video/mp4">
       </video>
 
       <div class="hero-content">
-
         <div class="hero-actions">
-          <a class="button primary" href="#contatti">Richiedi informazioni</a>
-          <a class="button light blue" href="#lavori">Guarda i lavori</a>
+          <a class="button primary" href="#contatti">
+            Richiedi informazioni
+          </a>
+
+          <a class="button light blue" href="#lavori">
+            Guarda i lavori
+          </a>
         </div>
       </div>
+
     </section>
 
     <section class="section" id="storia">
@@ -261,6 +266,31 @@
     setTimeout(() => {
       content.classList.add('show');
     }, 4500);
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("heroVideo");
+
+      const mobileVideo = "img/hero.mp4";
+      const desktopVideo = "img/hero-full.mp4";
+
+      const selectedVideo =
+        window.innerWidth <= 768
+          ? mobileVideo
+          : desktopVideo;
+
+      video.src = selectedVideo;
+      video.load();
+
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log("Autoplay bloccato:", err);
+        });
+      }
+    });
   </script>
 </body>
 
