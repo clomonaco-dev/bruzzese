@@ -1,3 +1,7 @@
 [build]
-  publish = "src"
+  command = "npm run build"
+  publish = ".next"
   functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "24"
