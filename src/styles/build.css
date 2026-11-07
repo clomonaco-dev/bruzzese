@@ -1,0 +1,442 @@
+/* =========================================================
+   HouseBuild — scroll-driven construction scene
+   Stage variables default to 1, so without JS the finished house shows.
+   ========================================================= */
+
+.build {
+  --p: 1;
+  --s0: 1;
+  --s1: 1;
+  --s2: 1;
+  --s3: 1;
+  --s4: 1;
+  --s5: 1;
+  --s6: 1;
+  --mx: 0;
+  --my: 0;
+  position: relative;
+  height: 480vh;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.build-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.34fr) minmax(0, 1fr);
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ---------- copy column ---------- */
+.build-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: calc(var(--header-h) + 1.5rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vh, 3.5rem) var(--gutter);
+}
+
+.build-title {
+  font-size: clamp(2.4rem, 3.6vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.build-phases {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0 0 0 1.4rem;
+  list-style: none;
+}
+
+.build-phases::before,
+.build-phases::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: var(--line-light);
+}
+
+.build-phases::after {
+  background: var(--gold);
+  transform: scaleY(var(--p));
+  transform-origin: top;
+}
+
+.build-phases li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 0.4rem;
+  padding: 0.55rem 0;
+  color: rgba(255, 255, 255, 0.34);
+  transition: color 0.6s var(--ease);
+}
+
+.build-phases li.is-done {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.build-phases li.is-active {
+  color: var(--white);
+}
+
+.build-phase-num {
+  padding-top: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.build-phases li.is-active .build-phase-num {
+  color: var(--gold);
+}
+
+.build-phases strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.build-phases p {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin: 0;
+  overflow: hidden;
+  color: var(--on-dark);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.6s var(--ease),
+    opacity 0.6s var(--ease),
+    margin 0.6s var(--ease);
+  max-height: 0;
+}
+
+.build-phases li.is-active p {
+  margin-top: 0.35rem;
+  max-height: 5rem;
+  opacity: 1;
+}
+
+.build-mobile {
+  display: none;
+}
+
+.build-meter {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 0.2rem 1rem;
+}
+
+.build-counter {
+  grid-row: span 2;
+  font-family: var(--font-serif);
+  font-size: clamp(3.6rem, 6vw, 6rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.build-counter small {
+  margin-left: 0.1em;
+  font-size: 0.4em;
+  color: var(--gold);
+}
+
+.build-meter-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.build-bar {
+  position: relative;
+  height: 1px;
+  margin-bottom: 0.6rem;
+  background: var(--line-light);
+}
+
+.build-bar span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--wine), var(--gold));
+  transform: scaleX(var(--p));
+  transform-origin: left;
+}
+
+/* ---------- stage ---------- */
+.build-stage {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.build-stage svg {
+  position: absolute;
+  inset: calc(var(--header-h) - 10px) 0 0 0;
+  width: 100%;
+  height: calc(100% - var(--header-h) + 10px);
+  overflow: visible;
+}
+
+.build-stage svg text {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.build-stage-fade {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 18%;
+  background: linear-gradient(90deg, var(--ink), rgba(18, 20, 24, 0));
+  pointer-events: none;
+}
+
+/* parallax depth (mouse) */
+.hb-far {
+  transform: translate(calc(var(--mx) * -16px), calc(var(--my) * -10px));
+}
+
+.hb-mid-far {
+  transform: translate(calc(var(--mx) * -6px), calc(var(--my) * -4px));
+}
+
+.hb-near {
+  transform: translate(calc(var(--mx) * 12px), calc(var(--my) * 6px));
+}
+
+/* s0 — blueprint */
+.hb-grid {
+  opacity: calc(var(--s0) * (1 - var(--s6) * 0.85));
+}
+
+.hb-draw path {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: calc(1 - var(--s0));
+}
+
+.hb-annot {
+  opacity: calc(clamp(0, calc(var(--s0) * 2), 1) * (1 - var(--s6)));
+}
+
+.hb-outline {
+  opacity: calc(1 - var(--s5) * 0.92);
+}
+
+/* s1 — excavation, foundation */
+.hb-soil {
+  opacity: calc(clamp(0, calc(var(--s1) * 2), 1) * (1 - var(--s6)));
+}
+
+.hb-footings {
+  opacity: calc(clamp(0, calc(var(--s1) * 2 - 0.4), 1) * (1 - var(--s6)));
+}
+
+.hb-found {
+  transform: translateY(calc((1 - var(--s1)) * 36px));
+  opacity: clamp(0, calc(var(--s1) * 2.5 - 1), 1);
+}
+
+/* s2 — walls (clip driven by JS); edge highlight while building */
+.hb-wall-edge {
+  opacity: calc(1 - var(--s5));
+}
+
+/* s3 — structure, staggered */
+.hb-struct > * {
+  --k: clamp(0, calc(var(--s3) * 2.4 - var(--i) * 0.09), 1);
+  opacity: var(--k);
+  transform: translateY(calc((1 - var(--k)) * -70px));
+}
+
+/* s4 — roofs */
+.hb-garage-roof {
+  opacity: clamp(0, calc(var(--s4) * 3), 1);
+  transform: translateX(calc((1 - var(--s4)) * -240px));
+}
+
+.hb-roof {
+  opacity: clamp(0, calc(var(--s4) * 2.5), 1);
+  transform: translateY(calc((1 - var(--s4)) * -190px));
+}
+
+.hb-seams path {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: calc(1 - clamp(0, calc(var(--s4) * 2 - 0.9), 1));
+}
+
+/* s5 — finishes */
+.hb-plaster {
+  opacity: clamp(0, calc(var(--s5) * 2), 1);
+}
+
+.hb-windows {
+  opacity: clamp(0, calc(var(--s5) * 2.2 - 0.6), 1);
+}
+
+.hb-gdoor {
+  transform-box: fill-box;
+  transform-origin: top;
+  transform: scaleY(clamp(0, calc(var(--s5) * 1.6 - 0.4), 1));
+}
+
+.hb-panels > * {
+  --k: clamp(0, calc(var(--s5) * 2.4 - 1 - var(--i) * 0.2), 1);
+  opacity: var(--k);
+  transform: translate(calc((1 - var(--k)) * 30px), calc((1 - var(--k)) * -40px));
+}
+
+/* s6 — delivery: night, lights, garden */
+.hb-sky,
+.hb-night {
+  opacity: var(--s6);
+}
+
+.hb-star {
+  animation: twinkle 3.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.37s);
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.hb-grass {
+  opacity: var(--s6);
+}
+
+.hb-lit,
+.hb-glow,
+.hb-halo,
+.hb-lit-soft {
+  opacity: clamp(0, calc(var(--s6) * 1.6 - 0.6), 1);
+}
+
+.hb-lit {
+  mix-blend-mode: screen;
+}
+
+.hb-tree {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scale(clamp(0.001, var(--s6), 1));
+}
+
+.hb-bushes,
+.hb-lamps {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(clamp(0.001, calc(var(--s6) * 1.4 - 0.2), 1));
+  opacity: clamp(0, calc(var(--s6) * 2), 1);
+}
+
+.hb-crane-wrap {
+  opacity: calc(clamp(0, calc(var(--s1) * 3), 1) * (1 - var(--s6)));
+  transform: translateX(calc(var(--s6) * 320px));
+}
+
+/* ---------- static (reduced motion) ---------- */
+.build.is-static {
+  height: auto;
+}
+
+.build.is-static .build-sticky {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .build {
+    height: 400vh;
+  }
+
+  .build-sticky {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .build-copy {
+    gap: 1.2rem;
+    padding: calc(70px + 1.2rem) var(--gutter) 0;
+  }
+
+  .build-copy .eyebrow {
+    margin-bottom: 0.9rem;
+  }
+
+  .build-title {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .build-phases {
+    display: none;
+  }
+
+  .build-mobile {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.4rem;
+    min-height: 4.6rem;
+  }
+
+  .build-mobile span {
+    padding-top: 0.3rem;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .build-mobile strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .build-mobile p {
+    margin: 0.25rem 0 0;
+    color: var(--on-dark);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .build-meter {
+    order: 3;
+  }
+
+  .build-counter {
+    font-size: 3rem;
+  }
+
+  .build-stage svg {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .build-stage-fade {
+    display: none;
+  }
+}

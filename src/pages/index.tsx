@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SiteLayout from "../components/SiteLayout";
 import WorkSlider from "../components/WorkSlider";
+import HouseBuild from "../components/HouseBuild";
 
 const timeline = [
   {
@@ -101,6 +102,8 @@ export default function Page() {
             <span>{"strade, ponti e viabilità"}</span>
           </div>
         </section>
+
+        <HouseBuild />
 
         <section className="section" id="storia">
           <div className="about-layout">

@@ -4,6 +4,7 @@ import "../styles/vendor/fancybox.css";
 import "../styles/vendor/owl.carousel.css";
 import "../styles/globals.css";
 import "../styles/home.css";
+import "../styles/build.css";
 import "../styles/civile.css";
 import "../styles/industriale.css";
 import "../styles/vendite.css";
