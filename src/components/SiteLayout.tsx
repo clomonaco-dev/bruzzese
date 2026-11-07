@@ -5,48 +5,77 @@ import Header from "./Header";
 import Footer from "./Footer";
 import FloatingSocial from "./FloatingSocial";
 import GalleryPlugins from "./GalleryPlugins";
+import useReveal from "./useReveal";
+
+const SITE = "https://costruzionibruzzesesrl.it";
 
 type Props = {
   children: ReactNode;
   title: string;
   description: string;
-  styles: string[];
   canonical: string;
+  page: "home" | "civile" | "industriale" | "vendite";
+  ogImage: string;
   gallery?: boolean;
   property?: boolean;
   consent?: boolean;
 };
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  name: "Costruzioni Bruzzese S.r.l.",
+  url: `${SITE}/`,
+  logo: `${SITE}/img/logo-foot.svg`,
+  image: `${SITE}/img/sede.jpg`,
+  foundingDate: "1986",
+  telephone: "+39 348 4277541",
+  email: "costruzionibruzzesesrl@gmail.com",
+  vatID: "IT02087060030",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Via dei Martiri delle Foibe 7",
+    postalCode: "28024",
+    addressLocality: "Gozzano",
+    addressRegion: "NO",
+    addressCountry: "IT",
+  },
+  sameAs: ["https://www.instagram.com/costruzionibruzzese/"],
+};
+
 export default function SiteLayout({
   children,
   title,
   description,
-  styles,
   canonical,
+  page,
+  ogImage,
   gallery,
   property,
   consent,
 }: Props) {
+  useReveal();
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <link rel="apple-touch-icon" href="/favicon/fav32.png" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/fav32.png"
-        />
-        {styles.map((href) => (
-          <link
-            key={href}
-            href={href.startsWith("/") ? href : `/${href}`}
-            rel="stylesheet"
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:site_name" content="Costruzioni Bruzzese S.r.l." />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={`${SITE}${ogImage}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {page === "home" && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
           />
-        ))}
+        )}
       </Head>
       <noscript>
         <iframe
@@ -56,18 +85,20 @@ export default function SiteLayout({
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
-      <FloatingSocial />
-      <div id="header-placeholder">
+      <a className="skip-link" href="#contenuto">
+        Vai al contenuto
+      </a>
+      <div className={`site page-${page}`}>
         <Header />
-      </div>
-      {children}
-      <div id="footer-placeholder">
+        <div id="contenuto">{children}</div>
         <Footer />
       </div>
+      <FloatingSocial />
       {gallery && <GalleryPlugins property={property} />}
       {consent && (
         <Script
           src="/js/iubenda-config.js"
+          strategy="lazyOnload"
           onLoad={() => {
             if (document.getElementById("iubenda-widget")) return;
             const script = document.createElement("script");
@@ -81,6 +112,7 @@ export default function SiteLayout({
       <Script
         src="https://analytics.clmautomation.it/script.js"
         data-website-id="62a6ae4e-a37e-405d-af54-bb50b91dd9b1"
+        strategy="afterInteractive"
       />
     </>
   );

@@ -32,7 +32,7 @@ export default function WorkSlider() {
         aria-label="Immagine precedente"
         onClick={() => move(-1)}
       >
-        ‹
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
       </button>
       <div
         className={`slider-stage${dragging ? " is-dragging" : ""}`}
@@ -79,7 +79,13 @@ export default function WorkSlider() {
               }
             }}
           >
-            <img src={slide.src} alt={slide.alt} />
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
           </a>
         ))}
       </div>
@@ -89,8 +95,15 @@ export default function WorkSlider() {
         aria-label="Immagine successiva"
         onClick={() => move(1)}
       >
-        ›
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
       </button>
+      <div className="slider-counter" aria-live="polite">
+        <strong>{String(current + 1).padStart(2, "0")}</strong>
+        <span className="slider-progress" aria-hidden="true">
+          <span style={{ transform: `scaleX(${(current + 1) / slides.length})` }} />
+        </span>
+        <span>{String(slides.length).padStart(2, "0")}</span>
+      </div>
     </div>
   );
 }

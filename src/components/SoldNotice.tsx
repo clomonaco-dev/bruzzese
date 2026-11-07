@@ -23,10 +23,12 @@ export default function SoldNotice() {
       id="soldModal"
       role="dialog"
       aria-modal="true"
+      aria-hidden={!open}
+      aria-labelledby="soldTitle"
     >
-      {" "}
+      
       <div className="sold-notice-card">
-        {" "}
+        
         <button
           className="sold-close"
           onClick={() => setOpen(false)}
@@ -34,25 +36,25 @@ export default function SoldNotice() {
           aria-label="Chiudi"
         >
           {"×"}
-        </button>{" "}
-        <span className="sold-kicker">{"Aggiornamento disponibilità"}</span>{" "}
-        <h2>{"Villetta già venduta"}</h2>{" "}
+        </button>
+        <span className="sold-kicker">{"Aggiornamento disponibilità"}</span>
+        <h2 id="soldTitle">{"Villetta già venduta"}</h2>
         <p>
           {
             " Il progetto resta online come esempio delle nostre realizzazioni e come fonte di ispirazione. "
           }
-        </p>{" "}
+        </p>
         <p>
           {
             " Stiamo preparando nuove proposte residenziali: torna presto o contattaci per ricevere aggiornamenti. "
           }
-        </p>{" "}
+        </p>
         <div className="sold-actions" onClick={() => setOpen(false)}>
-          {" "}
-          <a href="#galleria">{"Guarda il progetto"}</a>{" "}
-          <a href="#form">{"Richiedi informazioni"}</a>{" "}
-        </div>{" "}
-      </div>{" "}
+          
+          <a href="#galleria">{"Guarda il progetto"}</a>
+          <a href="#form">{"Richiedi informazioni"}</a>
+        </div>
+      </div>
     </div>
   );
 }

@@ -24,24 +24,22 @@ Il controllo dei tipi è disponibile con `npm run typecheck`.
 
 ## Struttura
 
-- `src/pages`: home, civile, industriale, vendite; configurazione del documento e dell'applicazione.
-- `src/pages/api/google-reviews.ts`: endpoint Node.js delle recensioni, con la logica originale condivisa dalla funzione Netlify.
-- `src/components`: layout, intestazione, footer, form, social, slider e avviso di vendita.
-- `public`: stili e risorse originali; `__forms.html` permette il rilevamento del modulo da parte di Netlify.
-- `netlify/functions`: integrazione Google Reviews originale mantenuta compatibile.
-- `legacy/v2-original`: sorgenti originali di questo branch, esclusi dal sito e dalla compilazione.
+- `src/pages`: home, civile, industriale, vendite; `_app.tsx` carica font (next/font: Cormorant Garamond + Urbanist) e tutti i CSS.
+- `src/styles`: `globals.css` (design system: colori, tipografia, bottoni, header, footer, animazioni) e un file per pagina, con selettori limitati a `.page-home`, `.page-civile`, `.page-industriale`, `.page-vendite`. `vendor/` contiene i CSS di Fancybox e Owl Carousel.
+- `src/components`: layout (SEO, Open Graph, dati strutturati), header con menu mobile a schermo intero, footer con form, social, slider, avviso di vendita, `useReveal` (animazioni allo scroll, disattivate con "riduci movimento").
+- `src/lib/google-reviews.ts`: logica recensioni Google usata dall'endpoint `/api/google-reviews`.
+- `public`: immagini, video, PDF, script Fancybox/Owl; `__forms.html` permette il rilevamento del modulo da parte di Netlify.
+- `legacy/v2-original`: sorgenti originali, esclusi dal sito e dalla compilazione.
 
-Le pagine hanno percorsi `/`, `/civile`, `/industriale`, `/vendite`. Le URL `.html` e i tre redirect storici rimangono funzionanti. I collegamenti standard tra pagine preservano l'isolamento dei rispettivi CSS.
-
-Menu, slider principale, modale e form sono gestiti da React. Fancybox e Owl Carousel sono caricati dal componente `GalleryPlugins` nelle versioni locali originali, conservando animazioni e comportamento grafico, comprese le dimensioni frazionarie del carosello di questo branch.
+Le pagine hanno percorsi `/`, `/civile`, `/industriale`, `/vendite`. Le URL `.html` e i tre redirect storici rimangono funzionanti (gestiti in `next.config.mjs`). Le immagini principali passano da `next/image` (su Netlify: Netlify Image CDN, formati AVIF/WebP).
 
 ## Servizi esterni
 
 Il modulo contatti continua a usare Netlify Forms: abilitarlo sul sito Netlify. Il form invia via fetch alla definizione statica `public/__forms.html`, con messaggi di successo/errore e protezione dagli invii duplicati. Un server Node.js autonomo non fornisce il servizio Netlify Forms: per inviare email fuori da Netlify occorre configurare un provider e un endpoint dedicato. In locale il form comunica che l'invio non è disponibile, senza simulare un invio riuscito.
 
-Per le recensioni, copiare `.env.example` in `.env.local` e impostare `GOOGLE_PLACES_API_KEY` e `GOOGLE_PLACE_ID`. L'endpoint è `/api/google-reviews`; anche `/.netlify/functions/google-reviews` resta compatibile. Le chiavi sono lette solo sul server. Nessuna chiave è inclusa nel repository.
+Per le recensioni, copiare `.env.example` in `.env.local` e impostare `GOOGLE_PLACES_API_KEY` e `GOOGLE_PLACE_ID`. L'endpoint è `/api/google-reviews` (le variabili vanno impostate anche nelle Environment variables di Netlify). Le chiavi sono lette solo sul server. Nessuna chiave è inclusa nel repository.
 
-Iubenda, analytics e i collegamenti esterni mantengono gli identificativi del sito originale. `netlify.toml` configura la build Next.js con output `.next` e runtime Node.js 24.
+Iubenda, analytics e i collegamenti esterni mantengono gli identificativi del sito originale. `netlify.toml` configura la build Next.js con output `.next`, runtime Node.js 24 e header di cache/sicurezza.
 
 ## Verifiche eseguite
 

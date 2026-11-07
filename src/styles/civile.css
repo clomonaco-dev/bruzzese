@@ -1,0 +1,266 @@
+/* =========================================================
+   Edilizia civile
+   ========================================================= */
+
+.page-civile .section .eyebrow {
+  color: var(--wine);
+}
+
+.page-civile .on-dark .eyebrow {
+  color: var(--gold);
+}
+
+/* ---------- overview ---------- */
+.page-civile .overview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  align-items: start;
+}
+
+.page-civile .sticky-note {
+  position: sticky;
+  top: 110px;
+}
+
+.page-civile .sticky-photo {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 2.2rem;
+}
+
+.page-civile .sticky-note h2 {
+  margin-bottom: 1.2rem;
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  line-height: 1.05;
+}
+
+.page-civile .feature-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.page-civile .feature {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.5rem;
+  padding: 2.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-civile .number {
+  font-family: var(--font-serif);
+  font-size: clamp(3.6rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--wine);
+  font-variant-numeric: lining-nums;
+}
+
+.page-civile .feature h3 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.7rem, 2.3vw, 2.3rem);
+  line-height: 1.05;
+}
+
+.page-civile .feature .copy {
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ---------- servizi ---------- */
+.page-civile .services-block .section-head,
+.page-civile .service-cards {
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-civile .service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line-light);
+  border-left: 1px solid var(--line-light);
+}
+
+.page-civile .service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: clamp(1.8rem, 3vw, 2.8rem);
+  border-right: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line-light);
+  transition: background-color 0.6s var(--ease);
+}
+
+.page-civile .service-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 2px;
+  background: var(--wine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease);
+}
+
+.page-civile .service-card:hover {
+  background: var(--ink-2);
+}
+
+.page-civile .service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.page-civile .service-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: auto;
+  padding-bottom: 3.5rem;
+}
+
+.page-civile .tag {
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.page-civile .service-num {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.page-civile .service-card h3 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.9rem, 2.4vw, 2.5rem);
+  line-height: 1.02;
+}
+
+.page-civile .service-card .copy {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ---------- metodo ---------- */
+.page-civile .split-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--paper-2);
+}
+
+.page-civile .photo-side {
+  min-height: 640px;
+}
+
+.page-civile .process-side {
+  padding: clamp(4.5rem, 9vw, 8.5rem) var(--gutter) clamp(4.5rem, 9vw, 8.5rem) clamp(2rem, 6vw, 6rem);
+}
+
+.page-civile .process-side .eyebrow {
+  color: var(--wine);
+}
+
+.page-civile .process-side .copy {
+  max-width: 560px;
+}
+
+.page-civile .steps {
+  counter-reset: step;
+  display: grid;
+  margin-top: 2.6rem;
+}
+
+.page-civile .step {
+  counter-increment: step;
+  position: relative;
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.4rem 0 1.4rem 4rem;
+  border-top: 1px solid var(--line);
+}
+
+.page-civile .step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.page-civile .step::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1.55rem;
+  color: var(--wine);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.page-civile .step strong {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.page-civile .step span {
+  color: var(--text);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .page-civile .service-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .page-civile .overview,
+  .page-civile .split-photo {
+    grid-template-columns: 1fr;
+  }
+
+  .page-civile .sticky-note {
+    position: static;
+  }
+
+  .page-civile .sticky-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .page-civile .photo-side {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .page-civile .process-side {
+    padding-left: var(--gutter);
+  }
+}
+
+@media (max-width: 620px) {
+  .page-civile .service-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .page-civile .service-card {
+    min-height: 0;
+  }
+
+  .page-civile .service-card-top {
+    padding-bottom: 2rem;
+  }
+
+  .page-civile .feature {
+    grid-template-columns: 64px 1fr;
+    gap: 1rem;
+  }
+}
