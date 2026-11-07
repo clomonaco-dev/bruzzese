@@ -1,20 +1,23 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "24"
 
-# Asset statici con cache lunga (immagini, font, video, PDF)
+[functions]
+  directory = "netlify/functions"
+
+# Asset statici con cache lunga (immagini, video, PDF)
 [[headers]]
   for = "/img/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
 
 [[headers]]
-  for = "/favicon/*"
+  for = "/_next/static/*"
   [headers.values]
-    Cache-Control = "public, max-age=2592000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*"
