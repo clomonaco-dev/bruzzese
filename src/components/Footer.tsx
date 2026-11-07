@@ -85,11 +85,7 @@ export default function Footer() {
                 <input type="checkbox" name="privacy" value="accept" required />
                 <span>
                   {"Dichiaro di aver letto l’"}
-                  <a
-                    href="https://www.iubenda.com/privacy-policy/65896961"
-                    className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed"
-                    title="Privacy Policy"
-                  >
+                  <a href="/privacy.html" target="_blank" rel="noopener" title="Privacy Policy">
                     {"informativa privacy"}
                   </a>
                   {" ed esprimo il consenso al trattamento dei dati per le finalità indicate."}
@@ -111,21 +107,8 @@ export default function Footer() {
           }
         </p>
         <p className="footer-legal">
-          <a
-            href="https://www.iubenda.com/privacy-policy/65896961"
-            className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed"
-          >
-            {"Privacy Policy"}
-          </a>
-          <a
-            href="https://www.iubenda.com/privacy-policy/65896961/cookie-policy"
-            className="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed"
-          >
-            {"Cookie Policy"}
-          </a>
-          <a href="#" className="iubenda-cs-preferences-link">
-            {"Le tue preferenze relative alla privacy"}
-          </a>
+          <a href="/privacy.html">{"Privacy Policy"}</a>
+          <a href="/cookie.html">{"Cookie Policy"}</a>
         </p>
       </div>
     </footer>

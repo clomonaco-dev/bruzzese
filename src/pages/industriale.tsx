@@ -52,7 +52,6 @@ export default function Page() {
       ogImage="/img/industriale1.jpg"
       gallery={false}
       property={false}
-      consent={false}
       canonical="https://costruzionibruzzesesrl.it/industriale.html"
     >
       <main>

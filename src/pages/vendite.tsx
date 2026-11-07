@@ -10,7 +10,6 @@ export default function Page() {
       ogImage="/img/lavorazioni/1/foto-inserimento.jpg"
       gallery={true}
       property={true}
-      consent={true}
       canonical="https://costruzionibruzzesesrl.it/vendite.html"
     >
       <SoldNotice />

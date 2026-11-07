@@ -8,6 +8,7 @@ import "../styles/build.css";
 import "../styles/civile.css";
 import "../styles/industriale.css";
 import "../styles/vendite.css";
+import "../styles/legal.css";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],

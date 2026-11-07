@@ -52,8 +52,8 @@ const seams = Array.from({ length: 23 }, (_, k) => {
   return `M${f1(a.x)} ${f1(a.y)} L${f1(b.x)} ${f1(b.y)}`;
 });
 
-const posts = Array.from({ length: 13 }, (_, k) => {
-  const x = 490 + k * 40;
+const posts = Array.from({ length: 12 }, (_, k) => {
+  const x = 510 + k * 40;
   return { x, top: under(tAt(x)) };
 });
 

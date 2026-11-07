@@ -46,7 +46,6 @@ export default function Page() {
       ogImage="/img/head.jpg"
       gallery={true}
       property={false}
-      consent={true}
       canonical="https://costruzionibruzzesesrl.it/"
     >
       <main>

@@ -74,7 +74,6 @@ export default function Page() {
       ogImage="/img/civile1.jpg"
       gallery={false}
       property={false}
-      consent={false}
       canonical="https://costruzionibruzzesesrl.it/civile.html"
     >
       <main>
